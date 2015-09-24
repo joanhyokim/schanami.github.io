@@ -72,7 +72,7 @@ ami.ads.gpt = (function() {
                 googletag.pubads().enableAsyncRendering();
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
-                googletag.pubads().setTargeting("kw", "dev3");
+                // googletag.pubads().setTargeting("kw", "dev3");
                 // googletag.pubads().setTargeting("s1", "homepage");
                 // googletag.pubads().setTargeting("pid", "homepage");
                 // googletag.pubads().setTargeting("type", "homepage");
@@ -116,7 +116,7 @@ ami.ads.gpt = (function() {
                         var target = targeting[i];
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
-                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
                     // googletag.pubads().enableSingleRequest();
@@ -137,7 +137,7 @@ ami.ads.gpt = (function() {
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
                     // yieldbot.setSlotTargeting(adObject.slotName, ami.ads.gpt.slots[adObject.slotName]);
-                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
 
@@ -167,7 +167,8 @@ ami.ads.gpt.addOOPSlot({
     adUnit: "/4216/mensfitness/homepage",
     idSelector: "dfp-ad-interstitial",
     targeting: [
-        ["pos", "interstitial"]
+        // ["pos", "interstitial"]
+        ["kw", "dev3"]
     ]
 });
 ami.ads.gpt.addOOPSlot({
@@ -175,7 +176,8 @@ ami.ads.gpt.addOOPSlot({
     adUnit: "/4216/mensfitness/homepage",
     idSelector: "dfp-ad-wallpaper",
     targeting: [
-        ["pos", "wallpaper"]
+        // ["pos", "wallpaper"]
+        ["kw", "dev3"]
     ]
 });
 ami.ads.gpt.addSlot({
