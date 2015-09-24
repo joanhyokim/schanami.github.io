@@ -72,6 +72,7 @@ ami.ads.gpt = (function() {
                 googletag.pubads().enableAsyncRendering();
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
+                googletag.pubads().setTargeting("kw", "dev3");
                 // googletag.pubads().setTargeting("s1", "homepage");
                 // googletag.pubads().setTargeting("pid", "homepage");
                 // googletag.pubads().setTargeting("type", "homepage");
