@@ -116,7 +116,7 @@ ami.ads.gpt = (function() {
                         var target = targeting[i];
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
-                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
                     // googletag.pubads().enableSingleRequest();
@@ -137,7 +137,7 @@ ami.ads.gpt = (function() {
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
                     // yieldbot.setSlotTargeting(adObject.slotName, ami.ads.gpt.slots[adObject.slotName]);
-                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
 
