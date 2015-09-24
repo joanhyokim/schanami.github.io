@@ -188,7 +188,8 @@ ami.ads.gpt.addSlot({
     ],
     idSelector: "dfp-ad-top_728x90",
     targeting: [
-        ["pos", "top"]
+        ["kw", "dev3"]
+        // ["pos", "top"]
     ]
 });
 ami.ads.gpt.addSlot({
@@ -201,7 +202,8 @@ ami.ads.gpt.addSlot({
     ],
     idSelector: "dfp-ad-right1_300x250",
     targeting: [
-        ["pos", "right1"]
+        ["kw", "dev3"]
+        // ["pos", "right1"]
     ]
 });
 ami.ads.gpt.addSlot({
@@ -210,7 +212,8 @@ ami.ads.gpt.addSlot({
     sizes: [300, 195],
     idSelector: "dfp-ad-right_subscribe_300x195",
     targeting: [
-        ["pos", "subscription"]
+        ["kw", "dev3"]
+        // ["pos", "subscription"]
     ]
 });
 ami.ads.gpt.addSlot({
@@ -219,7 +222,8 @@ ami.ads.gpt.addSlot({
     sizes: [300, 250],
     idSelector: "dfp-ad-right2_300x250",
     targeting: [
-        ["pos", "right2"]
+        ["kw", "dev3"]
+        // ["pos", "right2"]
     ]
 });
 if (window.innerWidth < 768) {
@@ -233,7 +237,9 @@ if (window.innerWidth < 768) {
         ],
         idSelector: "dfp-ad-mobile_top",
         targeting: [
-            ["pos", "mobile_top"]
+            ["kw", "dev3"]
+            // ["pos", "mobile_top"]
+
         ]
     });
 
@@ -247,7 +253,8 @@ if (window.innerWidth < 768) {
         ],
         idSelector: "dfp-ad-mobile_bottom",
         targeting: [
-            ["pos", "mobile_bottom"]
+            ["kw", "dev3"]
+            // ["pos", "mobile_bottom"]
         ]
     });
 
