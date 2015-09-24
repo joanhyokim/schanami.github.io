@@ -210,6 +210,7 @@ ami.ads.gpt.addSlot({
         [300, 600],
         [300, 1050]
     ],
+    lazyload: "true",
     idSelector: "dfp-ad-right1_300x250",
     targeting: [
         ["kw", "dev3"]
@@ -231,6 +232,7 @@ ami.ads.gpt.addSlot({
     adUnit: "/4216/mensfitness",
     sizes: [300, 250],
     idSelector: "dfp-ad-right2_300x250",
+    lazyload: "true",
     targeting: [
         ["kw", "dev3"]
         // ["pos", "right2"]
@@ -246,6 +248,7 @@ if (window.innerWidth < 768) {
             [300, 100]
         ],
         idSelector: "dfp-ad-mobile_top",
+        lazyload: "true",
         targeting: [
             ["kw", "dev3"]
             // ["pos", "mobile_top"]
@@ -262,6 +265,7 @@ if (window.innerWidth < 768) {
             [300, 100]
         ],
         idSelector: "dfp-ad-mobile_bottom",
+        lazyload: "true",
         targeting: [
             ["kw", "dev3"]
             // ["pos", "mobile_bottom"]
