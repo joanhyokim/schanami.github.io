@@ -164,7 +164,7 @@ ami.ads.gpt.initialize();
 
 ami.ads.gpt.addOOPSlot({
     slotName: "interstitial",
-    adUnit: "/4216/mensfitness/homepage",
+    adUnit: "/4216/mensfitness",
     idSelector: "dfp-ad-interstitial",
     targeting: [
         // ["pos", "interstitial"]
@@ -173,7 +173,7 @@ ami.ads.gpt.addOOPSlot({
 });
 ami.ads.gpt.addOOPSlot({
     slotName: "wallpaper",
-    adUnit: "/4216/mensfitness/homepage",
+    adUnit: "/4216/mensfitness",
     idSelector: "dfp-ad-wallpaper",
     targeting: [
         // ["pos", "wallpaper"]
@@ -196,7 +196,7 @@ ami.ads.gpt.addSlot({
 });
 ami.ads.gpt.addSlot({
     slotName: "right1_300x250",
-    adUnit: "/4216/mensfitness/homepage",
+    adUnit: "/4216/mensfitness",
     sizes: [
         [300, 250],
         [300, 600],
@@ -220,7 +220,7 @@ ami.ads.gpt.addSlot({
 // });
 ami.ads.gpt.addSlot({
     slotName: "right2_300x250",
-    adUnit: "/4216/mensfitness/homepage",
+    adUnit: "/4216/mensfitness",
     sizes: [300, 250],
     idSelector: "dfp-ad-right2_300x250",
     targeting: [
