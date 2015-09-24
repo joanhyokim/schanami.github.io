@@ -182,7 +182,7 @@ ami.ads.gpt.addOOPSlot({
 });
 ami.ads.gpt.addSlot({
     slotName: "top_728x90",
-    adUnit: "/4216/mensfitness/homepage",
+    adUnit: "/4216/mensfitness",
     sizes: [
         [728, 90],
         [970, 66],
