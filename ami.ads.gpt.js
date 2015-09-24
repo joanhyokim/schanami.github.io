@@ -110,6 +110,7 @@ ami.ads.gpt = (function() {
             ybotq.push(function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
+                    
                     ami.ads.gpt.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
                     for (var i = 0, len = targeting.length; i < len; i++) {
@@ -117,6 +118,12 @@ ami.ads.gpt = (function() {
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
                     yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    
+                    if(adObject.lazyload !== "true"){
+                        googletag.display(adObject.idSelector);
+                        delete ami.ads.gpt.slots[adObject.idSelector];
+                    }
+                    
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
                     // googletag.pubads().enableSingleRequest();
@@ -192,7 +199,8 @@ ami.ads.gpt.addSlot({
     targeting: [
         ["kw", "dev3"]
         // ["pos", "top"]
-    ]
+    ],
+    lazyload: "false"
 });
 ami.ads.gpt.addSlot({
     slotName: "right1_300x250",
