@@ -210,7 +210,7 @@ ami.ads.gpt.addSlot({
         [300, 600],
         [300, 1050]
     ],
-    lazyload: "true",
+    lazyload: "false",
     idSelector: "dfp-ad-right1_300x250",
     targeting: [
         ["kw", "dev3"]
