@@ -210,7 +210,7 @@ ami.ads.gpt.addSlot({
         [300, 600],
         [300, 1050]
     ],
-    lazyload: "false",
+    lazyload: "true",
     idSelector: "dfp-ad-right1_300x250",
     targeting: [
         ["kw", "dev3"]
@@ -232,7 +232,7 @@ ami.ads.gpt.addSlot({
     adUnit: "/4216/mensfitness",
     sizes: [300, 250],
     idSelector: "dfp-ad-right2_300x250",
-    lazyload: "true",
+    lazyload: "false",
     targeting: [
         ["kw", "dev3"]
         // ["pos", "right2"]
