@@ -208,6 +208,7 @@ ami.ads.gpt.addSlot({
     ],
     lazyload: "false"
 });
+window.scrollBy(1, 1);
 ami.ads.gpt.addSlot({
     slotName: "right1_300x250",
     adUnit: "/4216/mensfitness",
