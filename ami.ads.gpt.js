@@ -127,6 +127,7 @@ ami.ads.gpt = (function() {
                     
                     if(adObject.lazyload !== "true"){
                         googletag.display(adObject.idSelector);
+                        window.scrollBy(1, 1);
                         delete ami.ads.gpt.slots[adObject.idSelector];
                     }
                     
@@ -208,7 +209,7 @@ ami.ads.gpt.addSlot({
     ],
     lazyload: "false"
 });
-window.scrollBy(1, 1);
+
 ami.ads.gpt.addSlot({
     slotName: "right1_300x250",
     adUnit: "/4216/mensfitness",
