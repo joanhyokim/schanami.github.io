@@ -84,7 +84,13 @@ ami.ads.gpt = (function() {
             window.addEventListener('scroll', this.processElements);
             window.addEventListener('load', this.processElements);
 
-
+            window.addEventListener('scroll', function(){
+                var h = document.getElementById("top-ad").getBoundingClientRect().height;
+                if(h > 90){
+                document.querySelector(".page-wrapper").setAttribute("style","margin-top:380px");
+                }
+            });
+            
         },
         processElements: function() {
 
