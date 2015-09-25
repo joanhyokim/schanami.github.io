@@ -127,7 +127,7 @@ ami.ads.gpt = (function() {
                     
                     if(adObject.lazyload !== "true"){
                         googletag.display(adObject.idSelector);
-                        window.scrollBy(1, 1);
+                        
                         delete ami.ads.gpt.slots[adObject.idSelector];
                     }
                     
@@ -246,6 +246,11 @@ ami.ads.gpt.addSlot({
         // ["pos", "right2"]
     ]
 });
+
+setTimeout(function(){ window.scrollBy(1, 1); }, 1200);
+
+
+
 if (window.innerWidth < 768) {
     ami.ads.gpt.addSlot({
         slotName: "mobile_top",
