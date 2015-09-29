@@ -1,8 +1,4 @@
-/*!
- * "position: sticky" polyfill
- * https://github.com/matthewp/position--sticky-
- * License: MIT
- */ (function() {
+(function() {
     var prefixTestList = ['', '-webkit-', '-ms-', '-moz-', '-o-'];
     var stickyTestElement = document.createElement('div');
     var lastKnownScrollTop = 0;
