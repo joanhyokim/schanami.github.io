@@ -103,7 +103,14 @@ ami.ads.gpt = (function() {
             		// if(window.scrollY > (60+leaderboard_height)){
             		// if(window.scrollY > top && window.scrollY < 1200){
             		// if(window.scrollY > top && top >= -250){
-            			l.classList.add("fixed");
+            		if(leaderboard_height == 90){
+            		    l.classList.add("fixed fixed-90");
+            		}
+            		if(leaderboard_height == 250){
+            		    l.classList.add("fixed fixed-250");
+            		}
+
+            // 			l.classList.add("fixed");
             // 			l.setAttribute("style","height:"+leaderboard_height+"px");
             			window.setTimeout(function(){
             				l.classList.remove("fixed");
