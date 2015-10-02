@@ -84,32 +84,43 @@ ami.ads.gpt = (function() {
             window.addEventListener('scroll', this.processElements);
             window.addEventListener('load', this.processElements);
 
-            
+
+
             window.addEventListener("scroll",function(){
             	var l = document.getElementById("dfp-ad-top_728x90");
             	var top = l.getBoundingClientRect().top;
+            	var bottom = l.getBoundingClientRect().bottom;
             	var table = [];
             	var leaderboard_height = l.getBoundingClientRect().height;
-                
+            
             	table.push(["leaderboard height",leaderboard_height]);
             	table.push(["window.scrollY", window.scrollY]);
             	table.push(["leaderboard.top", top]);
-            	if(window.scrollY < leaderboard_height){
-            	    l.classList.remove("fixed");
-            	}
-            	if(window.scrollY > (60+leaderboard_height)){
-            	// if(window.scrollY > top && window.scrollY < 1200){
-            	// if(window.scrollY > top && top >= -250){
-            		l.classList.add("fixed");
-            		window.setTimeout(function(){
+            
+            	var page_height = document.getElementsByTagName("html")[0].offsetHeight;
+            	if(window.scrollY < bottom){
+            
+            		// if(window.scrollY > (60+leaderboard_height)){
+            		// if(window.scrollY > top && window.scrollY < 1200){
+            		// if(window.scrollY > top && top >= -250){
+            			l.classList.add("fixed");
+            			window.setTimeout(function(){
+            				l.classList.remove("fixed");
+            			},6000);
+            		// }
+            		// if(window.scrollY < leaderboard_height){
+            		if(window.scrollY == 0){
             			l.classList.remove("fixed");
-            		},6000);
+            		}
             	}
+            
             	// else {
             	// 	l.classList.remove("fixed");
             	// }
             	console.table(table);
             });
+            
+
 
             window.addEventListener('scroll', function(){
                 var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
