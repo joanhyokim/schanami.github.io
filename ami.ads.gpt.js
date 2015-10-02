@@ -104,6 +104,7 @@ ami.ads.gpt = (function() {
             		// if(window.scrollY > top && window.scrollY < 1200){
             		// if(window.scrollY > top && top >= -250){
             			l.classList.add("fixed");
+            			l.setAttribute("style","height:"+leaderboard_height+"px");
             			window.setTimeout(function(){
             				l.classList.remove("fixed");
             			},6000);
