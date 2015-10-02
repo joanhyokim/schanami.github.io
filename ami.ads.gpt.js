@@ -89,7 +89,7 @@ ami.ads.gpt = (function() {
             window.addEventListener("scroll",function(){
             	var l = document.getElementById("dfp-ad-top_728x90");
             	var top = l.getBoundingClientRect().top;
-            	var bottom = l.getBoundingClientRect().bottom;
+            	var bottom = document.getElementById("dfp-ad-right1_300x250").getBoundingClientRect().bottom;
             	var table = [];
             	var leaderboard_height = l.getBoundingClientRect().height;
             
