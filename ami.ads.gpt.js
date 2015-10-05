@@ -115,14 +115,16 @@ ami.ads.gpt = (function() {
             // 			l.classList.add("fixed");
             // 			l.setAttribute("style","height:"+leaderboard_height+"px");
             			window.setTimeout(function(){
-            				l.classList.remove("fixed");
+            			    l.classList.add("close");
+            				// l.classList.remove("fixed");
             				l.classList.remove("fixed-90");
             				l.classList.remove("fixed-250");
             			},6000);
             		// }
             		// if(window.scrollY < leaderboard_height){
             		if(window.scrollY == 0){
-            			l.classList.remove("fixed");
+            		    l.classList.add("close");
+            // 			l.classList.remove("fixed");
         				l.classList.remove("fixed-90");
         				l.classList.remove("fixed-250");
             		}
