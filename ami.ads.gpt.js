@@ -301,7 +301,7 @@ if(window.innerWidth > 768){
         ]
     });
     
-    setTimeout(function(){ window.scrollBy(1, 1); }, 1200);
+    // setTimeout(function(){ window.scrollBy(1, 1); }, 1200);
 
 }
 
