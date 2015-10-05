@@ -123,8 +123,8 @@ ami.ads.gpt = (function() {
             		// }
             		// if(window.scrollY < leaderboard_height){
             		if(window.scrollY == 0){
-            		    l.classList.add("close");
-            // 			l.classList.remove("fixed");
+            		  //  l.classList.add("close");
+            			l.classList.remove("fixed");
         				l.classList.remove("fixed-90");
         				l.classList.remove("fixed-250");
             		}
