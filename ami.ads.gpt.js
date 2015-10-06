@@ -89,7 +89,7 @@ ami.ads.gpt = (function() {
             window.addEventListener("scroll",function(){
             	var l = document.getElementById("dfp-ad-top_728x90");
             	var top = l.getBoundingClientRect().top;
-            	var bottom = document.getElementById("dfp-ad-right1_300x250").getBoundingClientRect().bottom;
+            	var bottom = document.getElementById("dfp-ad-right1_300x250").getBoundingClientRect().top;
             	var table = [];
             	var leaderboard_height = l.getBoundingClientRect().height;
             
@@ -136,7 +136,8 @@ ami.ads.gpt = (function() {
             	console.table(table);
             });
             
-
+            
+            
 var seen = 0;
 var seen2 = 0;
 window.addEventListener("scroll",function(){
@@ -153,8 +154,8 @@ window.addEventListener("scroll",function(){
 		var sidebar = document.getElementsByClassName("sidebar")[0];
 
 		var calc_right = html.getBoundingClientRect().right - sidebar.getBoundingClientRect().right;
-
-		document.getElementById("dfp-ad-right1_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:0;right:"+calc_right+"px");
+		var calc_top = document.getElementById("dfp-ad-top_728x90").getBoundingClientRect().height;
+		document.getElementById("dfp-ad-right1_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:"+calc_top"px;right:"+calc_right+"px");
 		sidebar.setAttribute("style","background:#fff;position:fixed;top:250px;z-index:99999;right:"+calc_right+"px;");
 
 		setTimeout(function(){
