@@ -7,7 +7,7 @@ var stickyElement = function () {
     $stickyEl.waypoint('sticky', {
         wrapper: '<div class="article-sticky-wrapper" />',
         stuckClass: 'sticky',
-        offset: -1
+        offset: 90
     });
 
     $stopEl.waypoint(function (direction) {
