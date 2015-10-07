@@ -137,54 +137,7 @@ ami.ads.gpt = (function() {
             });
             
             
-            
-var seen = 0;
-var seen2 = 0;
-window.addEventListener("scroll",function(){
 
-	if((window.scrollY + window.innerHeight) > document.getElementById("footer").offsetTop){
-	// if(isOverlap(document.getElementById("footer"),document.getElementById("block-ami-mostpopular-1"))){
-		document.getElementById("dfp-ad-right2_300x250").setAttribute("style","");
-		document.getElementById("block-ami-mostpopular-1").setAttribute("style","");
-	}
-
-	console.log("300x250"+document.getElementById("dfp-ad-right1_300x250").getBoundingClientRect().top);
-	if(window.scrollY >= document.getElementById("dfp-ad-right1_300x250").getBoundingClientRect().top && seen === 0){
-		var html = document.getElementsByClassName("html")[0];
-		var sidebar = document.getElementsByClassName("sidebar")[0];
-
-		var calc_right = html.getBoundingClientRect().right - sidebar.getBoundingClientRect().right;
-		var calc_top = document.getElementById("dfp-ad-top_728x90").getBoundingClientRect().height;
-		document.getElementById("dfp-ad-right1_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:"+calc_top+"px;right:"+calc_right+"px");
-		sidebar.setAttribute("style","background:#fff;position:fixed;top:250px;z-index:99999;right:"+calc_right+"px;");
-
-		setTimeout(function(){
-			seen = 1;
-			document.getElementById("dfp-ad-right1_300x250").setAttribute("style","");
-			document.getElementsByClassName("sidebar")[0].setAttribute("style","");
-
-		},6000);
-	}
-	if(window.scrollY >= document.getElementById("dfp-ad-right2_300x250").getBoundingClientRect().top && seen2 === 0){
-		var html = document.getElementsByClassName("html")[0];
-		var sidebar = document.getElementsByClassName("sidebar")[0];
-
-		var calc_right = html.getBoundingClientRect().right - sidebar.getBoundingClientRect().right;
-
-		document.getElementById("dfp-ad-right2_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:0;right:"+calc_right+"px");
-		document.getElementById("block-ami-mostpopular-1").setAttribute("style","background:#fff;z-index:99999;position:fixed;width:300px;top:260px;right:"+calc_right+"px");
-		// sidebar.setAttribute("style","background:#fff;position:fixed;top:250px;z-index:99999;right:"+calc_right+"px;");
-		// sidebar.setAttribute("style","display:none;");
-
-		setTimeout(function(){
-			seen2 = 1;
-			document.getElementById("dfp-ad-right2_300x250").setAttribute("style","");
-			// document.getElementsByClassName("sidebar")[0].setAttribute("style","");
-
-		},6000);
-	}
-
-});
 
             window.addEventListener('scroll', function(){
                 var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
