@@ -135,8 +135,26 @@ ami.ads.gpt = (function() {
             	// }
             	console.table(table);
             });
+                        
+            window.addEventListener("scroll",function(){
+            	var ad1 = document.getElementById("dfp-ad-right1_300x250");
+            	var ad2 = document.getElementById("dfp-ad-right2_300x250");
             
+            	var ad1_top = ad1.getBoundingClientRect().top;
+            	var ad2_top = ad2.getBoundingClientRect().top;
             
+            	if(ad1_top < 250 && ad1_top >= 0){
+            		ad1.setAttribute("style","position:fixed;top:0;z-index:99999")
+            		ad2.setAttribute("style","");
+            	}
+            	if(ad2_top < 250 && ad2_top >= 0){
+            		ad2.setAttribute("style","position:fixed;top:0;z-index:99999")
+            		ad1.setAttribute("style","");
+            	}
+            	if((ad2.getBoundingClientRect().bottom + 25) > document.getElementById("footer").getBoundingClientRect().top){
+            		ad2.setAttribute("style","");
+            	}
+            });            
 
 
             window.addEventListener('scroll', function(){
