@@ -277,29 +277,29 @@ ami.ads.gpt.initialize();
 // 	targeting: [["pos","top"]]
 // })
 //ami.ads.gpt.addSlot({sizes: [300,600]});
-
+var ami.ads.adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Drupal.settings["mfTaboola"]["kargo"]["section"];
 if(window.innerWidth > 768){
     ami.ads.gpt.addOOPSlot({
     slotName: "interstitial",
-    adUnit: "/4216/mensfitness",
+    adUnit: "/4216/mensfitness"+ami.ads.adUnit,
     idSelector: "dfp-ad-interstitial",
     targeting: [
-        // ["pos", "interstitial"]
-        ["kw", "dev3"]
+        ["pos", "interstitial"]
+        // ["kw", "dev3"]
     ]
     });
     ami.ads.gpt.addOOPSlot({
         slotName: "wallpaper",
-        adUnit: "/4216/mensfitness",
+        adUnit: "/4216/mensfitness"+ami.ads.adUnit,
         idSelector: "dfp-ad-wallpaper",
         targeting: [
-            // ["pos", "wallpaper"]
-            ["kw", "dev3"]
+            ["pos", "wallpaper"]
+            // ["kw", "dev3"]
         ]
     });
     ami.ads.gpt.addSlot({
         slotName: "top_728x90",
-        adUnit: "/4216/mensfitness",
+        adUnit: "/4216/mensfitness"+ami.ads.adUnit,
         sizes: [
             [728, 90],
             [970, 66],
@@ -307,15 +307,15 @@ if(window.innerWidth > 768){
         ],
         idSelector: "dfp-ad-top_728x90",
         targeting: [
-            ["kw", "dev3"]
-            // ["pos", "top"]
+            // ["kw", "dev3"]
+            ["pos", "top"]
         ],
         lazyload: "false"
     });
     
     ami.ads.gpt.addSlot({
         slotName: "right1_300x250",
-        adUnit: "/4216/mensfitness",
+        adUnit: "/4216/mensfitness"+ami.ads.adUnit,
         sizes: [
             [300, 250],
             [300, 600],
@@ -324,8 +324,8 @@ if(window.innerWidth > 768){
         lazyload: "false",
         idSelector: "dfp-ad-right1_300x250",
         targeting: [
-            ["kw", "dev3"]
-            // ["pos", "right1"]
+            // ["kw", "dev3"]
+            ["pos", "right1"]
         ]
     });
     // ami.ads.gpt.addSlot({
@@ -340,13 +340,13 @@ if(window.innerWidth > 768){
     // });
     ami.ads.gpt.addSlot({
         slotName: "right2_300x250",
-        adUnit: "/4216/mensfitness",
+        adUnit: "/4216/mensfitness"+ami.ads.adUnit,
         sizes: [300, 250],
         idSelector: "dfp-ad-right2_300x250",
         lazyload: "true",
         targeting: [
-            ["kw", "dev3"]
-            // ["pos", "right2"]
+            // ["kw", "dev3"]
+            ["pos", "right2"]
         ]
     });
     
@@ -359,7 +359,7 @@ if(window.innerWidth > 768){
 if (window.innerWidth < 768) {
     ami.ads.gpt.addSlot({
         slotName: "mobile_top",
-        adUnit: "/4216/mob.mensfitness/homepage",
+        adUnit: "/4216/mob.mensfitness"+ami.ads.adUnit,
         sizes: [
             [320, 50],
             [300, 50],
@@ -368,15 +368,15 @@ if (window.innerWidth < 768) {
         idSelector: "dfp-ad-mobile_top",
         lazyload: "true",
         targeting: [
-            ["kw", "dev3"]
-            // ["pos", "mobile_top"]
+            // ["kw", "dev3"]
+            ["pos", "mobile_top"]
 
         ]
     });
 
     ami.ads.gpt.addSlot({
         slotName: "mobile_bottom",
-        adUnit: "/4216/mob.mensfitness/homepage",
+        adUnit: "/4216/mob.mensfitness"+ami.ads.adUnit,
         sizes: [
             [300, 50],
             [320, 50],
@@ -385,8 +385,8 @@ if (window.innerWidth < 768) {
         idSelector: "dfp-ad-mobile_bottom",
         lazyload: "true",
         targeting: [
-            ["kw", "dev3"]
-            // ["pos", "mobile_bottom"]
+            // ["kw", "dev3"]
+            ["pos", "mobile_bottom"]
         ]
     });
 
