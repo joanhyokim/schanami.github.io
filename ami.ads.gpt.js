@@ -295,7 +295,7 @@ if(window.innerWidth > 768){
         adUnit: "/4216/mensfitness",
         sizes: [300, 250],
         idSelector: "dfp-ad-right2_300x250",
-        lazyload: "true",
+        lazyload: "false",
         targeting: [
             ["kw", "dev3"]
             // ["pos", "right2"]
