@@ -135,55 +135,56 @@ ami.ads.gpt = (function() {
             	// }
             	console.table(table);
             });
+          
+        var position = window.scrollY;
+        window.addEventListener("scroll",function(){
+        	/* catch scroll direction */
+        	var scroll = window.scrollY;
+        	var direction = "";
+        	if(scroll > position){
+        		direction = "down"
+        	}
+        	else {
+        		direction = "up";
+        	}
+        	position = scroll;
+        
+        	var ad1 = document.getElementById("dfp-ad-right1_300x250");
+        	var ad2 = document.getElementById("dfp-ad-right2_300x250");
+        
+        	var ad1_top = ad1.getBoundingClientRect().top;
+        	var ad2_top = ad2.getBoundingClientRect().top;
+        
+        	var leaderboard = document.getElementById("dfp-ad-top_728x90");
+        	var leaderboard_height = leaderboard.getBoundingClientRect().height;
+        	if(ad1_top < 250 && ad1_top >= 0 && direction == "down"){
+        		if(leaderboard.getBoundingClientRect().bottom !== 1){
+        			ad1.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:10px")
+        		}
+        		else {
+        			ad1.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:10px")
+        		}
+        		ad2.setAttribute("style","");
+        	}
+        	if(ad2_top < 250 && ad2_top >= 0 && direction == "down"){
+        		if(leaderboard.getBoundingClientRect().bottom !== 1){
+        			ad2.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:10px")
+        		}
+        		else {
+        			ad2.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:10px")	
+        		}
+        		ad1.setAttribute("style","");
+        	}
+        	if((ad2.getBoundingClientRect().bottom + 25) > document.getElementById("footer").getBoundingClientRect().top){
+        		ad2.setAttribute("style","");
+        	}
+        	if(window.scrollY < 50){
+        		ad1.setAttribute("style","");
+        		ad2.setAttribute("style","");
+        	}
+        });
+        
 
-            var position = window.scrollY;
-            window.addEventListener("scroll",function(){
-            	/* catch scroll direction */
-            	var scroll = window.scrollY;
-            	var direction = "";
-            	if(scroll > position){
-            		direction = "down"
-            	}
-            	else {
-            		direction = "up";
-            	}
-            	position = scroll;
-            
-            	var ad1 = document.getElementById("dfp-ad-right1_300x250");
-            	var ad2 = document.getElementById("dfp-ad-right2_300x250");
-            
-            	var ad1_top = ad1.getBoundingClientRect().top;
-            	var ad2_top = ad2.getBoundingClientRect().top;
-            
-            	var leaderboard = document.getElementById("dfp-ad-top_728x90");
-            	var leaderboard_height = leaderboard.getBoundingClientRect().height;
-            	if(ad1_top < 250 && ad1_top >= 0 && direction == "down"){
-            		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad1.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff")
-            		}
-            		else {
-            			ad1.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff")
-            		}
-            		ad2.setAttribute("style","");
-            	}
-            	if(ad2_top < 250 && ad2_top >= 0 && direction == "down"){
-            		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad2.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff")
-            		}
-            		else {
-            			ad2.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff")	
-            		}
-            		ad1.setAttribute("style","");
-            	}
-            	if((ad2.getBoundingClientRect().bottom + 25) > document.getElementById("footer").getBoundingClientRect().top){
-            		ad2.setAttribute("style","");
-            	}
-            	if(window.scrollY < 50){
-            		ad1.setAttribute("style","");
-            		ad2.setAttribute("style","");
-            	}
-            });            
-            
 
             window.addEventListener('scroll', function(){
                 var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
