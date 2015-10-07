@@ -155,7 +155,7 @@ window.addEventListener("scroll",function(){
 
 		var calc_right = html.getBoundingClientRect().right - sidebar.getBoundingClientRect().right;
 		var calc_top = document.getElementById("dfp-ad-top_728x90").getBoundingClientRect().height;
-		document.getElementById("dfp-ad-right1_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:"+calc_top"px;right:"+calc_right+"px");
+		document.getElementById("dfp-ad-right1_300x250").setAttribute("style","background:#fff;z-index:99999;position:fixed;top:"+calc_top+"px;right:"+calc_right+"px");
 		sidebar.setAttribute("style","background:#fff;position:fixed;top:250px;z-index:99999;right:"+calc_right+"px;");
 
 		setTimeout(function(){
