@@ -1,5 +1,6 @@
 var ami = ami || {};
 ami.ads = ami.ads || {};
+ami.ads.adUnit = ami.ads.adUnit || "";
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
