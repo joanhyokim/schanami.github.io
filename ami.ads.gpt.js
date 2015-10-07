@@ -154,8 +154,11 @@ ami.ads.gpt = (function() {
             	if((ad2.getBoundingClientRect().bottom + 25) > document.getElementById("footer").getBoundingClientRect().top){
             		ad2.setAttribute("style","");
             	}
+            	if(window.scrollY < 50){
+            		ad1.setAttribute("style","");
+            		ad2.setAttribute("style","");
+            	}
             });            
-
 
             window.addEventListener('scroll', function(){
                 var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
