@@ -6,7 +6,6 @@ Licensed under the MIT license.
 https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 */
 
-
 (function() {
     (function(root, factory) {
         if (typeof define === 'function' && define.amd) {
