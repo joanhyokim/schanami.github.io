@@ -284,8 +284,8 @@ if(window.innerWidth > 768){
     adUnit: "/4216/mensfitness"+adUnit,
     idSelector: "dfp-ad-interstitial",
     targeting: [
-        ["pos", "interstitial"]
-        // ["kw", "dev3"]
+        // ["pos", "interstitial"]
+        ["kw", "dev3"]
     ]
     });
     ami.ads.gpt.addOOPSlot({
@@ -293,8 +293,8 @@ if(window.innerWidth > 768){
         adUnit: "/4216/mensfitness"+adUnit,
         idSelector: "dfp-ad-wallpaper",
         targeting: [
-            ["pos", "wallpaper"]
-            // ["kw", "dev3"]
+            // ["pos", "wallpaper"]
+            ["kw", "dev3"]
         ]
     });
     ami.ads.gpt.addSlot({
@@ -307,8 +307,8 @@ if(window.innerWidth > 768){
         ],
         idSelector: "dfp-ad-top_728x90",
         targeting: [
-            // ["kw", "dev3"]
-            ["pos", "top"]
+            ["kw", "dev3"]
+            // ["pos", "top"]
         ],
         lazyload: "false"
     });
@@ -324,8 +324,8 @@ if(window.innerWidth > 768){
         lazyload: "false",
         idSelector: "dfp-ad-right1_300x250",
         targeting: [
-            // ["kw", "dev3"]
-            ["pos", "right1"]
+            ["kw", "dev3"]
+            // ["pos", "right1"]
         ]
     });
     // ami.ads.gpt.addSlot({
@@ -345,8 +345,8 @@ if(window.innerWidth > 768){
         idSelector: "dfp-ad-right2_300x250",
         lazyload: "true",
         targeting: [
-            // ["kw", "dev3"]
-            ["pos", "right2"]
+            ["kw", "dev3"]
+            // ["pos", "right2"]
         ]
     });
     
@@ -368,7 +368,7 @@ if (window.innerWidth < 768) {
         idSelector: "dfp-ad-mobile_top",
         lazyload: "true",
         targeting: [
-            // ["kw", "dev3"]
+            ["kw", "dev3"]
             ["pos", "mobile_top"]
 
         ]
@@ -385,8 +385,8 @@ if (window.innerWidth < 768) {
         idSelector: "dfp-ad-mobile_bottom",
         lazyload: "true",
         targeting: [
-            // ["kw", "dev3"]
-            ["pos", "mobile_bottom"]
+            ["kw", "dev3"]
+            // ["pos", "mobile_bottom"]
         ]
     });
 
