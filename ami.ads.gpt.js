@@ -173,7 +173,10 @@ ami.ads.gpt = (function() {
 
             	if(ad1_top < 250 && ad1_top >= 0 && direction == "down"){
             		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad1.setAttribute("style","position:fixed;top:"+anchorTopPos+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            			ad1.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            		}
+            		else if(header_height == 83){
+                        ad1.setAttribute("style","position:fixed;top:83px;z-index:99999;background:#fff;padding-bottom:20px")            		    
             		}
             		else {
             			ad1.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")
@@ -182,7 +185,10 @@ ami.ads.gpt = (function() {
             	}
             	if(ad2_top < 250 && ad2_top >= 0 && direction == "down"){
             		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad2.setAttribute("style","position:fixed;top:"+anchorTopPos+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            			ad2.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            		}
+            		else if(header_height){
+                        ad2.setAttribute("style","position:fixed;top:83px;z-index:99999;background:#fff;padding-bottom:20px")            		    
             		}
             		else {
             			ad2.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")	
