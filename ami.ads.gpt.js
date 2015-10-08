@@ -72,6 +72,21 @@ ami.ads.gpt = (function() {
                 googletag.pubads().enableAsyncRendering();
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
+                
+                var targetKW = "";
+                var targetS1 = Drupal.settings["mfTaboola"]["kargo"]["category"].replace(/-/g,"_");
+                var targetS2 = Drupal.settings["mfTaboola"]["kargo"]["section"].replace(/-/g,"_");
+                var targetPid = "nid_"+Drupal.settings["gigyaComments"]["commentsUIparams"]["streamID"];
+                var targetType = dataLayer[0].pageCategory || "";
+                var targetTopic = "";                
+
+                googletag.pubads().setTargeting("kw", targetKW);
+                googletag.pubads().setTargeting("s1", targetS1);
+                googletag.pubads().setTargeting("s2", targetS2);
+                googletag.pubads().setTargeting("pid", targetPid);
+                googletag.pubads().setTargeting("type", targetType);
+                googletag.pubads().setTargeting("topic", targetTopic);                
+                
                 // googletag.pubads().setTargeting("kw", "dev3");
                 // googletag.pubads().setTargeting("s1", "homepage");
                 // googletag.pubads().setTargeting("pid", "homepage");
