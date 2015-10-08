@@ -66,7 +66,7 @@ ami.ads.gpt = (function() {
             var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
             document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 
-            // ybotq.push(function() {
+            ybotq.push(function() {
             googletag.cmd.push(function() {
                 // googletag.pubads().disableInitialLoad();
                 googletag.pubads().enableAsyncRendering();
@@ -95,7 +95,7 @@ ami.ads.gpt = (function() {
             });
 
 
-            // });
+            });
 
             window.addEventListener('scroll', this.processElements);
             window.addEventListener('load', this.processElements);
