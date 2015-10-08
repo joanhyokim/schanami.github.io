@@ -87,6 +87,7 @@ ami.ads.gpt = (function() {
                 googletag.pubads().setTargeting("type", targetType);
                 googletag.pubads().setTargeting("topic", targetTopic);                
                 
+                googletag.enableServices();
                 // googletag.pubads().setTargeting("kw", "dev3");
                 // googletag.pubads().setTargeting("s1", "homepage");
                 // googletag.pubads().setTargeting("pid", "homepage");
