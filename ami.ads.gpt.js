@@ -156,11 +156,24 @@ ami.ads.gpt = (function() {
             	var ad1_top = ad1.getBoundingClientRect().top;
             	var ad2_top = ad2.getBoundingClientRect().top;
             
-            	var leaderboard = document.getElementById("dfp-ad-top_728x90");
+            
+                var leaderboard = document.getElementById("dfp-ad-top_728x90");
             	var leaderboard_height = leaderboard.getBoundingClientRect().height;
+            	var header = document.getElementById("header");
+            	var header_height = header.getBoundingClientRect().height;
+            	
+            	
+                var anchorTopPos = 0;
+                if(leaderboard.getBoundClientRect().top > 0){
+                    anchorTopPos = anchorTopPos + leaderboard_height;
+                }
+                if(header_height == 83){
+                    anchorTopPos = anchorTopPos + 83;
+                }
+
             	if(ad1_top < 250 && ad1_top >= 0 && direction == "down"){
             		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad1.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            			ad1.setAttribute("style","position:fixed;top:"+anchorTopPos+"px;z-index:99999;background:#fff;padding-bottom:20px")
             		}
             		else {
             			ad1.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")
@@ -169,7 +182,7 @@ ami.ads.gpt = (function() {
             	}
             	if(ad2_top < 250 && ad2_top >= 0 && direction == "down"){
             		if(leaderboard.getBoundingClientRect().bottom !== 1){
-            			ad2.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:20px")
+            			ad2.setAttribute("style","position:fixed;top:"+anchorTopPos+"px;z-index:99999;background:#fff;padding-bottom:20px")
             		}
             		else {
             			ad2.setAttribute("style","position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")	
