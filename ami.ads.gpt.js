@@ -133,7 +133,7 @@ ami.ads.gpt = (function() {
             	// else {
             	// 	l.classList.remove("fixed");
             	// }
-            	console.table(table);
+            // 	console.table(table);
             });
           
             
