@@ -164,7 +164,7 @@ ami.ads.gpt = (function() {
             	
             	
                 var anchorTopPos = 0;
-                if(leaderboard.getBoundClientRect().top > 0){
+                if(leaderboard.getBoundingClientRect().top > 0){
                     anchorTopPos = anchorTopPos + leaderboard_height;
                 }
                 if(header_height == 83){
