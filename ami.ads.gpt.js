@@ -73,19 +73,19 @@ ami.ads.gpt = (function() {
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().collapseEmptyDivs();
                 
-                var targetKW = "";
-                var targetS1 = Drupal.settings["mfTaboola"]["kargo"]["category"].replace(/-/g,"_");
-                var targetS2 = Drupal.settings["mfTaboola"]["kargo"]["section"].replace(/-/g,"_");
-                var targetPid = "nid_"+Drupal.settings["gigyaComments"]["commentsUIparams"]["streamID"];
-                var targetType = dataLayer[0].pageCategory || "";
-                var targetTopic = "";                
+                // var targetKW = "";
+                // var targetS1 = Drupal.settings["mfTaboola"]["kargo"]["category"].replace(/-/g,"_");
+                // var targetS2 = Drupal.settings["mfTaboola"]["kargo"]["section"].replace(/-/g,"_");
+                // var targetPid = "nid_"+Drupal.settings["gigyaComments"]["commentsUIparams"]["streamID"];
+                // var targetType = dataLayer[0].pageCategory || "";
+                // var targetTopic = "";                
 
-                googletag.pubads().setTargeting("kw", targetKW);
-                googletag.pubads().setTargeting("s1", targetS1);
-                googletag.pubads().setTargeting("s2", targetS2);
-                googletag.pubads().setTargeting("pid", targetPid);
-                googletag.pubads().setTargeting("type", targetType);
-                googletag.pubads().setTargeting("topic", targetTopic);                
+                googletag.pubads().setTargeting("kw", ads_targeting["kw"]);
+                googletag.pubads().setTargeting("s1", ads_targeting["s1"]);
+                googletag.pubads().setTargeting("s2", ads_targeting["s2"]);
+                googletag.pubads().setTargeting("pid", ads_targeting["pid"]);
+                googletag.pubads().setTargeting("type", ads_targeting["type"]);
+                googletag.pubads().setTargeting("topic", ads_targeting["topic"]);                
                 
                 googletag.enableServices();
                 // googletag.pubads().setTargeting("kw", "dev3");
