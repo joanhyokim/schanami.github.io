@@ -183,7 +183,7 @@ ami.ads.gpt = (function() {
                 if(leaderboard.getBoundingClientRect().top > 0){
                     anchorTopPos = anchorTopPos + leaderboard_height;
                 }
-                if(header_height == 83){
+                if(header_height === 83){
                     anchorTopPos = anchorTopPos + 83;
                 }
 
@@ -203,7 +203,7 @@ ami.ads.gpt = (function() {
             		if(leaderboard.getBoundingClientRect().bottom !== 1){
             			ad2.setAttribute("style","position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-bottom:20px")
             		}
-            		else if(header_height){
+            		else if(header_height === 83){
                         ad2.setAttribute("style","position:fixed;top:83px;z-index:99999;background:#fff;padding-bottom:20px")            		    
             		}
             		else {
