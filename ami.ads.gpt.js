@@ -4,6 +4,8 @@ var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
 // var ybotq = ybotq || [];
+Headertag_defer_queue = Headertag_defer_queue || [];
+
 // (function() {
 //   var gads = document.createElement('script');
 //   gads.async = true;
@@ -34,6 +36,11 @@ ami.ads.gpt = (function() {
             rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight || rect.height))
         },
         initialize: function() {
+         var script = document.createElement("script");
+             script.type = "text/javascript";
+            script.src = "http://js.indexww.com/ht/headertag-ami.js";
+            var node = document.getElementsByTagName("script")[0];
+            node.parentNode.insertBefore(script, node);
 
             // (function() {
             //     var js = document.createElement('script');
@@ -67,6 +74,7 @@ ami.ads.gpt = (function() {
             document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 
             // ybotq.push(function() {
+            Headertag_defer_queue.push(function () {
             googletag.cmd.push(function() {
                 // googletag.pubads().disableInitialLoad();
                 googletag.pubads().enableAsyncRendering();
@@ -95,7 +103,7 @@ ami.ads.gpt = (function() {
             });
 
 
-            // });
+            });
 
             window.addEventListener('scroll', this.processElements);
             window.addEventListener('load', this.processElements);
@@ -251,7 +259,7 @@ ami.ads.gpt = (function() {
         },
         addSlot: function(adObject) {
 
-            // ybotq.push(function() {
+            ybotq.push(function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
                     
@@ -274,12 +282,12 @@ ami.ads.gpt = (function() {
                     // googletag.pubads().enableSingleRequest();
                     // googletag.pubads().collapseEmptyDivs();
                 });
-            // });
+            });
 
         },
         addOOPSlot: function(adObject) {
             // ybotq.push(function() {
-
+                Headertag_defer_queue.push(function () {
                 googletag.cmd.push(function() {
 
                     ami.ads.gpt.slots[adObject.idSelector] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
@@ -297,7 +305,7 @@ ami.ads.gpt = (function() {
                     // googletag.pubads().collapseEmptyDivs();
                 });
 
-            // });
+            });
 
         }
     }
