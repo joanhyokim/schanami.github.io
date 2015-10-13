@@ -2,6 +2,7 @@ var ami = ami || {};
 ami.ads = ami.ads || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
+googletag.slots = googletag.slots || {};
 
 window.Headertag_defer_queue = [];
 
@@ -162,12 +163,14 @@ ami.ads.gpt = (function() {
         processElements: function() {
 
 
-            Object.keys(ami.ads.gpt.slots).forEach(function(key) {
+            // Object.keys(ami.ads.gpt.slots).forEach(function(key) {
+            Object.keys(googletag.slots).forEach(function(key) {                
                 var el = document.getElementById(key);
                 if (ami.ads.gpt.elementInViewport(el)) {
                     googletag.display(key);
                     console.log(key);
-                    delete ami.ads.gpt.slots[key];
+                    // delete ami.ads.gpt.slots[key];
+                    delete googletag.slots[key];
 
                 }
             });
@@ -178,17 +181,19 @@ ami.ads.gpt = (function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
                     
-                    ami.ads.gpt.slots[adObject.slotName] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
+                    // ami.ads.gpt.slots[adObject.slotName] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
+                    googletag.slots[adObject.slotName] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
                     for (var i = 0, len = targeting.length; i < len; i++) {
                         var target = targeting[i];
-                        ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                        // ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                        googletag.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
 
                     if(adObject.lazyload !== "true"){
                         googletag.display(adObject.idSelector);
-                        
-                        delete ami.ads.gpt.slots[adObject.idSelector];
+                        // delete ami.ads.gpt.slots[adObject.idSelector];
+                        delete googletag.slots[adObject.idSelector];
                     }
                     
                     googletag.enableServices();
@@ -200,11 +205,13 @@ ami.ads.gpt = (function() {
                 Headertag_defer_queue.push(function () {
                 googletag.cmd.push(function() {
 
-                    ami.ads.gpt.slots[adObject.slotName] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
+                    // ami.ads.gpt.slots[adObject.slotName] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
+                    googletag.slots[adObject.slotName] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
                     var targeting = adObject.targeting;
                     for (var i = 0, len = targeting.length; i < len; i++) {
                         var target = targeting[i];
-                        ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                        // ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                        googletag.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
                     googletag.enableServices();
                 });
