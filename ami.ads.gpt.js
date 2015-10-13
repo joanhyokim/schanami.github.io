@@ -3,7 +3,7 @@ ami.ads = ami.ads || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
-window.Headertag_defer_queue = Headertag_defer_queue || [];
+window.Headertag_defer_queue = [];
 
 
 
