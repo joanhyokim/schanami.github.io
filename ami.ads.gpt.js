@@ -237,7 +237,7 @@ if(window.innerWidth > 768){
         ]
     });
     ami.ads.gpt.addSlot({
-        slotName: "top_728x90",
+        slotName: "horizontal-position-1",
         adUnit: "/4216/mensfitness"+adUnit,
         sizes: [
             [728, 90],
