@@ -35,38 +35,38 @@ ami.ads.gpt = (function() {
         },
         initialize: function() {
 
-            (function() {
-                var js = document.createElement('script');
-                js.src = '//cdn.yldbt.com/js/yieldbot.intent.js';
-                var node = document.getElementsByTagName('script')[0];
-                node.parentNode.insertBefore(js, node);
-            })();
+            // (function() {
+            //     var js = document.createElement('script');
+            //     js.src = '//cdn.yldbt.com/js/yieldbot.intent.js';
+            //     var node = document.getElementsByTagName('script')[0];
+            //     node.parentNode.insertBefore(js, node);
+            // })();
 
-            ybotq.push(function() {
-                if (window.innerWidth >= 768) {
-                    yieldbot.pub('4534');
-                    yieldbot.defineSlot('right1_300x250', {
-                        sizes: [
-                            [300, 250],
-                            [300, 600]
-                        ]
-                    });
-                    yieldbot.defineSlot('top_728x90');
-                }
-                if (window.innerWidth < 768) {
-                    yieldbot.pub('0651');
-                    yieldbot.defineSlot('mobile_top');
-                    yieldbot.defineSlot('mobile_bottom');
-                }
-                yieldbot.enableAsync();
-                yieldbot.go();
-            });
+            // ybotq.push(function() {
+            //     if (window.innerWidth >= 768) {
+            //         yieldbot.pub('4534');
+            //         yieldbot.defineSlot('right1_300x250', {
+            //             sizes: [
+            //                 [300, 250],
+            //                 [300, 600]
+            //             ]
+            //         });
+            //         yieldbot.defineSlot('top_728x90');
+            //     }
+            //     if (window.innerWidth < 768) {
+            //         yieldbot.pub('0651');
+            //         yieldbot.defineSlot('mobile_top');
+            //         yieldbot.defineSlot('mobile_bottom');
+            //     }
+            //     yieldbot.enableAsync();
+            //     yieldbot.go();
+            // });
 
             var useSSL = 'https:' == document.location.protocol;
             var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
             document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
 
-            ybotq.push(function() {
+            // ybotq.push(function() {
             googletag.cmd.push(function() {
                 // googletag.pubads().disableInitialLoad();
                 googletag.pubads().enableAsyncRendering();
@@ -95,7 +95,7 @@ ami.ads.gpt = (function() {
             });
 
 
-            });
+            // });
 
             window.addEventListener('scroll', this.processElements);
             window.addEventListener('load', this.processElements);
@@ -222,12 +222,12 @@ ami.ads.gpt = (function() {
             
 
           
-            window.addEventListener('scroll', function(){
-                var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
-                if(h > 90){
-                document.querySelector(".page-wrapper").setAttribute("style","margin-top:380px");
-                }
-            });
+            // window.addEventListener('scroll', function(){
+            //     var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
+            //     if(h > 90){
+            //     document.querySelector(".page-wrapper").setAttribute("style","margin-top:380px");
+            //     }
+            // });
             
         },
         processElements: function() {
@@ -251,7 +251,7 @@ ami.ads.gpt = (function() {
         },
         addSlot: function(adObject) {
 
-            ybotq.push(function() {
+            // ybotq.push(function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
                     
@@ -261,7 +261,7 @@ ami.ads.gpt = (function() {
                         var target = targeting[i];
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
-                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     
                     if(adObject.lazyload !== "true"){
                         googletag.display(adObject.idSelector);
@@ -274,11 +274,11 @@ ami.ads.gpt = (function() {
                     // googletag.pubads().enableSingleRequest();
                     // googletag.pubads().collapseEmptyDivs();
                 });
-            });
+            // });
 
         },
         addOOPSlot: function(adObject) {
-            ybotq.push(function() {
+            // ybotq.push(function() {
 
                 googletag.cmd.push(function() {
 
@@ -289,7 +289,7 @@ ami.ads.gpt = (function() {
                         ami.ads.gpt.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                     }
                     // yieldbot.setSlotTargeting(adObject.slotName, ami.ads.gpt.slots[adObject.slotName]);
-                    yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
+                    // yieldbot.setSlotTargeting(adObject.idSelector, ami.ads.gpt.slots[adObject.idSelector]);
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
 
@@ -297,7 +297,7 @@ ami.ads.gpt = (function() {
                     // googletag.pubads().collapseEmptyDivs();
                 });
 
-            });
+            // });
 
         }
     }
