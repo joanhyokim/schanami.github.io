@@ -178,7 +178,7 @@ ami.ads.gpt = (function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
                     
-                    ami.ads.gpt.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
+                    ami.ads.gpt.slots[adObject.slotName] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
                     for (var i = 0, len = targeting.length; i < len; i++) {
                         var target = targeting[i];
@@ -200,7 +200,7 @@ ami.ads.gpt = (function() {
                 Headertag_defer_queue.push(function () {
                 googletag.cmd.push(function() {
 
-                    ami.ads.gpt.slots[adObject.idSelector] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
+                    ami.ads.gpt.slots[adObject.slotName] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
                     var targeting = adObject.targeting;
                     for (var i = 0, len = targeting.length; i < len; i++) {
                         var target = targeting[i];
