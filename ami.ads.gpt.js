@@ -363,16 +363,17 @@ if(window.innerWidth > 768){
             // ["pos", "right1"]
         ]
     });
-    // ami.ads.gpt.addSlot({
-    //     slotName: "right_subscribe_300x195",
-    //     adUnit: "/4216/mensfitness/homepage",
-    //     sizes: [300, 195],
-    //     idSelector: "dfp-ad-right_subscribe_300x195",
-    //     targeting: [
-    //         ["kw", "dev3"]
-    //         // ["pos", "subscription"]
-    //     ]
-    // });
+    ami.ads.gpt.addSlot({
+        slotName: "right_subscribe_300x195",
+        adUnit: "/4216/mensfitness"+adUnit,
+        sizes: [300, 195],
+        idSelector: "dfp-ad-right_subscribe_300x195",
+        lazyload: "false",
+        targeting: [
+            ["kw", "dev3"]
+            // ["pos", "subscription"]
+        ]
+    });
     ami.ads.gpt.addSlot({
         slotName: "right2_300x250",
         adUnit: "/4216/mensfitness"+adUnit,
