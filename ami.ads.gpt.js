@@ -260,7 +260,7 @@ if(window.innerWidth > 768){
     });
     
     ami.ads.gpt.addSlot({
-        slotName: "right1_300x250",
+        slotName: "rightrail-position-2",
         adUnit: "/4216/mensfitness"+adUnit,
         sizes: [
             [300, 250],
@@ -286,7 +286,7 @@ if(window.innerWidth > 768){
         ]
     });
     ami.ads.gpt.addSlot({
-        slotName: "right2_300x250",
+        slotName: "rightrail-position-3",
         adUnit: "/4216/mensfitness"+adUnit,
         sizes: [300, 250],
         idSelector: "dfp-ad-right2_300x250",
