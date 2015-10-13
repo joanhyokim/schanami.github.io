@@ -3,7 +3,7 @@ ami.ads = ami.ads || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
-var ybotq = ybotq || [];
+// var ybotq = ybotq || [];
 // (function() {
 //   var gads = document.createElement('script');
 //   gads.async = true;
