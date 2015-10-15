@@ -127,6 +127,9 @@ ami.ads.gpt = (function() {
                         _sf_async_config.sections = "other,"+document.location.pathname.replace(/\//g,"_").slice(1);
                     }
                     
+                    console.log("chartbeat zone:"+_sf_async_config.zone);
+                    console.log("chartbeat sections:"+_sf_async_config.sections);
+                    
                     _sf_async_config.useCanonical = true;
                     /** CHARTBEAT CONFIGURATION END **/
                     
