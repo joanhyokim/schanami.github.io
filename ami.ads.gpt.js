@@ -111,10 +111,7 @@ ami.ads.gpt = (function() {
                     _sf_async_config.domain = 'mensfitness.com';
                     _sf_async_config.engagedAdFilters = [{engagedSeconds:20}];
                     var adunit = [ads_targeting["s1"],ads_targeting["s2"],ads_targeting["s3"]]
-                    if(ads_targeting["type"] === "landing_page"){
-                        _sf_async_config.zone = 'mensfitness/'+adunit.join("/")+"landing";
-                    }
-                    else if(ads_targeting["type"] == "homepage"){
+                    if(ads_targeting["type"] == "homepage"){
                         _sf_async_config.zone = 'mensfitness/homepage';
                     }
                     else {
