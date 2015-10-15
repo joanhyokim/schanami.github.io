@@ -103,6 +103,41 @@ ami.ads.gpt = (function() {
                     }
 
                     googletag.enableServices();
+                    
+                                    
+                    var _sf_async_config = {};
+                    /** CHARTBEAT CONFIGURATION START **/
+                    _sf_async_config.uid = 11054;
+                    _sf_async_config.domain = 'mensfitness.com';
+                    _sf_async_config.engagedAdFilters = [{engagedSeconds:20}];
+                    var adunit = [ads_targeting["s1"],ads_targeting["s2"],ads_targeting["s3"]]
+                    if(ads_targeting["type"] === "landing_page"){
+                        _sf_async_config.zone = 'mensfitness/'+adunit.join("/")+"landing";
+                    }
+                    else if(ads_targeting["type"] == "homepage"){
+                        _sf_async_config.zone = 'mensfitness/homepage';
+                    }
+                    else {
+                        _sf_async_config.zone = 'mensfitness/'+adunit.join("/");
+                    }
+                    if(ads_targeting["type"] === "homepage"){
+                        _sf_async_config.sections = "other,mf-homepage";    
+                    }
+                    else {
+                        _sf_async_config.sections = "other,"+document.location.pathname.replace(/\//g,"_").slice(1);
+                    }
+                    
+                    _sf_async_config.useCanonical = true;
+                    /** CHARTBEAT CONFIGURATION END **/
+                    
+
+                    window._sf_endpt=(new Date()).getTime();
+                    var e = document.createElement('script');
+                    e.setAttribute('language', 'javascript');
+                    e.setAttribute('type', 'text/javascript');
+                    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat_ad.js');
+                    document.body.appendChild(e);
+
                     // googletag.pubads().setTargeting("kw", "dev3");
                     // googletag.pubads().setTargeting("s1", "homepage");
                     // googletag.pubads().setTargeting("pid", "homepage");
