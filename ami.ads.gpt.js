@@ -83,6 +83,7 @@ ami.ads.gpt = (function() {
                     googletag.pubads().setTargeting("kw", ads_targeting["kw"]);
                     googletag.pubads().setTargeting("s1", ads_targeting["s1"]);
                     googletag.pubads().setTargeting("s2", ads_targeting["s2"]);
+                    googletag.pubads().setTargeting("s3", ads_targeting["s2"]);
                     googletag.pubads().setTargeting("pid", ads_targeting["pid"]);
                     googletag.pubads().setTargeting("type", ads_targeting["type"]);
                     googletag.pubads().setTargeting("topic", ads_targeting["topic"]);
