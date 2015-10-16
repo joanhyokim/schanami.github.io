@@ -476,5 +476,15 @@ if (window.innerWidth < 768) {
             ["pos", "mobile_bottom"]
             ]
     });
+    
+    ami.mensfitness.ads.addOOPSlot({
+        slotName: "mobile_interstitial",
+        adUnit: "/4216/mob.mensfitness" + adUnit,
+        idSelector: "dfp-ad-mobile_interstitial",
+        targeting: [
+        ["kw", "dev3"],
+        ["pos", "mobile_interstitial"]
+        ]
+    });    
 
 }
