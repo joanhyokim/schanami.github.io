@@ -271,9 +271,12 @@ ami.mensfitness.ads = (function() {
 
 
             window.addEventListener('scroll', function() {
-                var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
-                if (h > 90) {
-                    document.querySelector(".page-wrapper").setAttribute("style", "margin-top:380px");
+                if(document.querySelector("#top-ad.nh") !== null){
+                    var h = document.querySelector("#top-ad.nh").getBoundingClientRect().height;
+                    if (h > 90) {
+                        document.querySelector(".page-wrapper").setAttribute("style", "margin-top:380px");
+                    }
+                    
                 }
             });
 
