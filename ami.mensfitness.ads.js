@@ -450,7 +450,7 @@ if (window.innerWidth < 768) {
             [300, 100]
         ],
         idSelector: "dfp-ad-mobile_top",
-        lazyload: "true",
+        lazyload: "false",
         targeting: [
             ["kw", "dev3"],
             ["pos", "mobile_top"]
@@ -467,7 +467,7 @@ if (window.innerWidth < 768) {
             [300, 100]
         ],
         idSelector: "dfp-ad-mobile_bottom",
-        lazyload: "true",
+        lazyload: "false",
         targeting: [
             ["kw", "dev3"],
             ["pos", "mobile_bottom"]
