@@ -101,6 +101,9 @@ ami.mensfitness.ads = (function() {
                     if(typeof ads_targeting["topic"] !== "undefined"){
                         googletag.pubads().setTargeting("topic", ads_targeting["topic"]);
                     }
+                    if(document.location.search.slice(1) === "test=on"){
+                        googletag.pubads().setTargeting("test", "on");
+                    }                    
 
                     googletag.enableServices();
                     
