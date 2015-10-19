@@ -318,6 +318,7 @@ ami.mensfitness.ads = (function() {
                 googletag.cmd.push(function() {
                     var targeting = adObject.targeting;
                     ami.mensfitness.ads.slots[adObject.idSelector]["device"] = adObject.device;
+                    
                     ami.mensfitness.ads.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
                     for (var i = 0, len = targeting.length; i < len; i++) {
