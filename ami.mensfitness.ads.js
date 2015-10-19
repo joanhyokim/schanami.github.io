@@ -341,6 +341,9 @@ ami.mensfitness.ads = (function() {
                     }
                     // yieldbot.setSlotTargeting(adObject.slotName, ami.mensfitness.ads.slots[adObject.slotName]);
                     yieldbot.setSlotTargeting(adObject.idSelector, ami.mensfitness.ads.slots[adObject.idSelector]);
+                    googletag.display(adObject.idSelector);
+                    
+                    delete ami.mensfitness.ads.slots[adObject.idSelector];
                     googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
 
