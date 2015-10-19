@@ -290,21 +290,9 @@ ami.mensfitness.ads = (function() {
                 if (ami.mensfitness.ads.elementInViewport(el)) {
                     // googletag.cmd.push(function(){
                     // setTimeout(function(){
-                    if(ami.mensfitness.ads.slots[key].device === "desktop"){
-                        if(window.innerWidth > 768){
-                            googletag.display(key);
-                            console.log(key);
-                            delete ami.mensfitness.ads.slots[key];
-                        }
-                    }                     
-                    if(ami.mensfitness.ads.slots[key].device === "mobile"){
-                        if(window.innerWidth < 768){
-                            googletag.display(key);
-                            console.log(key);
-                            delete ami.mensfitness.ads.slots[key];
-                        }
-                    }                     
-                    
+                    googletag.display(key);
+                    console.log(key);
+                    delete ami.mensfitness.ads.slots[key];
 
                     // },1000);
 
@@ -328,19 +316,8 @@ ami.mensfitness.ads = (function() {
                     yieldbot.setSlotTargeting(adObject.idSelector, ami.mensfitness.ads.slots[adObject.idSelector]);
 
                     if (adObject.lazyload !== "true") {
-                        if(adObject.device === "desktop"){
-                            if(window.innerWidth > 768){
-                                googletag.display(adObject.idSelector);
-                                delete ami.mensfitness.ads.slots[adObject.idSelector];
-                            }
-                        }                        
-                        if(adObject.device === "mobile"){
-                            if(window.innerWidth < 768){
-                                googletag.display(adObject.idSelector);
-                                delete ami.mensfitness.ads.slots[adObject.idSelector];
-                            }
-                        }                        
-                        
+                        googletag.display(adObject.idSelector);
+                        delete ami.mensfitness.ads.slots[adObject.idSelector];
                     }
 
                     googletag.enableServices();
@@ -387,7 +364,7 @@ ami.mensfitness.ads.initialize();
 // })
 //ami.ads.gpt.addSlot({sizes: [300,600]});
 var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Drupal.settings["mfTaboola"]["kargo"]["section"];
-// if (window.innerWidth > 768) {
+if (window.innerWidth > 768) {
     ami.mensfitness.ads.addOOPSlot({
         slotName: "interstitial",
         adUnit: "/4216/mensfitness" + adUnit,
@@ -468,11 +445,11 @@ var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Dru
 
     // setTimeout(function(){ window.scrollBy(1, 1); }, 1200);
 
-// }
+}
 
 
 
-// if (window.innerWidth < 768) {
+if (window.innerWidth < 768) {
     ami.mensfitness.ads.addSlot({
         slotName: "mobile_top",
         adUnit: "/4216/mob.mensfitness" + adUnit,
@@ -519,4 +496,4 @@ var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Dru
         ]
     });    
 
-// }
+}
