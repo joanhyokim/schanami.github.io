@@ -467,6 +467,21 @@ if(document.documentElement.clientWidth < 768){
     });
 
     ami.mensfitness.ads.addSlot({
+        slotName: "mobile_box",
+        adUnit: "/4216/mob.mensfitness" + adUnit,
+        sizes: [
+            [300, 250]
+        ],
+        idSelector: "dfp-ad-mobile_box",
+        lazyload: "false",
+        targeting: [
+            ["kw", "dev3"],
+            ["pos", "mobile_box"]
+        ]
+    });
+    
+    
+    ami.mensfitness.ads.addSlot({
         slotName: "mobile_bottom",
         adUnit: "/4216/mob.mensfitness" + adUnit,
         sizes: [
