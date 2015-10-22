@@ -227,9 +227,11 @@ ami.mensfitness.ads = (function() {
             });
         },
         addSlot: function(adObject) {
-
+            var lazyload = adObject.lazyload;
+            var targeting = adObject.targeting;
+            var adObject_local = adObject;
             googletag.cmd.push(function() {
-                var targeting = adObject.targeting;
+                
 
                 ami.mensfitness.ads.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
@@ -238,7 +240,7 @@ ami.mensfitness.ads = (function() {
                     ami.mensfitness.ads.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                 }
 
-                if (adObject.lazyload !== "true") {
+                if (lazyload !== "true") {
                     googletag.display(adObject.idSelector);
 
                     delete ami.mensfitness.ads.slots[adObject.idSelector];
