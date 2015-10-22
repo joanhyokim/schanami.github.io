@@ -3,7 +3,6 @@ ami.mensfitness = ami.mensfitness || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
-
 ami.mensfitness.ads = (function() {
     return {
         slots: {},
@@ -14,14 +13,9 @@ ami.mensfitness.ads = (function() {
         },
         initialize: function() {
 
-
-
-
-
             var useSSL = 'https:' == document.location.protocol;
             var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
             document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-
 
             googletag.cmd.push(function() {
 
