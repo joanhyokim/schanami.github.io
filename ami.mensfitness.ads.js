@@ -369,7 +369,13 @@ ami.mensfitness.ads.initialize();
 // 	targeting: [["pos","top"]]
 // })
 //ami.ads.gpt.addSlot({sizes: [300,600]});
-var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Drupal.settings["mfTaboola"]["kargo"]["section"];
+var adUnit;
+if(Drupal.settings["mfTaboola"]["kargo"]["section"]){
+    var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"] + "/" + Drupal.settings["mfTaboola"]["kargo"]["section"];
+}
+else {
+    var adUnit = "/" + Drupal.settings["mfTaboola"]["kargo"]["category"];
+}
 // if (window.innerWidth > 768) {
 if(document.documentElement.clientWidth > 768){
     ami.mensfitness.ads.addOOPSlot({
