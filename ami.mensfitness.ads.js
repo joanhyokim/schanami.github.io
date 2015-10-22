@@ -141,7 +141,7 @@ ami.mensfitness.ads = (function() {
                     e.setAttribute('src', '//static.chartbeat.com/js/chartbeat_ad.js');
                     document.body.appendChild(e);
 
-                    // googletag.pubads().setTargeting("kw", "dev3");
+                    
                     // googletag.pubads().setTargeting("s1", "homepage");
                     // googletag.pubads().setTargeting("pid", "homepage");
                     // googletag.pubads().setTargeting("type", "homepage");
@@ -374,7 +374,7 @@ if(document.documentElement.clientWidth > 768){
         adUnit: "/4216/mensfitness" + adUnit,
         idSelector: "dfp-ad-interstitial",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "interstitial"]
         ]
     });
@@ -383,7 +383,7 @@ if(document.documentElement.clientWidth > 768){
         adUnit: "/4216/mensfitness" + adUnit,
         idSelector: "dfp-ad-wallpaper",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "wallpaper"]
         ]
     });
@@ -397,7 +397,7 @@ if(document.documentElement.clientWidth > 768){
         ],
         idSelector: "dfp-ad-top_728x90",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "top"]
         ],
         lazyload: "false"
@@ -414,7 +414,7 @@ if(document.documentElement.clientWidth > 768){
         lazyload: "false",
         idSelector: "dfp-ad-right1_300x250",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "right1"]
         ]
     });
@@ -425,7 +425,7 @@ if(document.documentElement.clientWidth > 768){
         idSelector: "dfp-ad-right_subscribe_300x195",
         lazyload: "false",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "subscription"]
         ]
     });
@@ -436,7 +436,7 @@ if(document.documentElement.clientWidth > 768){
         idSelector: "dfp-ad-right2_300x250",
         lazyload: "true",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "right2"]
         ]
     });
@@ -460,7 +460,7 @@ if(document.documentElement.clientWidth < 768){
         idSelector: "dfp-ad-mobile_top",
         lazyload: "false",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "mobile_top"]
 
         ]
@@ -475,7 +475,7 @@ if(document.documentElement.clientWidth < 768){
         idSelector: "dfp-ad-mobile_box",
         lazyload: "false",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "mobile_box"]
         ]
     });
@@ -492,7 +492,7 @@ if(document.documentElement.clientWidth < 768){
         idSelector: "dfp-ad-mobile_bottom",
         lazyload: "false",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "mobile_bottom"]
         ]
     });
@@ -502,7 +502,7 @@ if(document.documentElement.clientWidth < 768){
         adUnit: "/4216/mob.mensfitness" + adUnit,
         idSelector: "dfp-ad-mobile_interstitial",
         targeting: [
-            ["kw", "dev3"],
+            
             ["pos", "mobile_interstitial"]
         ]
     });
