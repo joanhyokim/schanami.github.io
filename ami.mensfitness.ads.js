@@ -72,7 +72,10 @@ ami.mensfitness.ads = (function() {
                     // googletag.pubads().enableAsyncRendering();
                     // googletag.pubads().enableSingleRequest();
                     // googletag.pubads().collapseEmptyDivs();
-
+                    googletag.pubads().enableAsyncRendering();
+                    googletag.pubads().enableSingleRequest();
+                    googletag.pubads().collapseEmptyDivs();
+                    googletag.enableServices();
                     // var targetKW = "";
                     // var targetS1 = Drupal.settings["mfTaboola"]["kargo"]["category"].replace(/-/g,"_");
                     // var targetS2 = Drupal.settings["mfTaboola"]["kargo"]["section"].replace(/-/g,"_");
@@ -509,12 +512,12 @@ if(document.documentElement.clientWidth < 768){
 
 }
 
-ybotq.push(function() {
-    googletag.cmd.push(function() {
-        // googletag.pubads().disableInitialLoad();
-        googletag.pubads().enableAsyncRendering();
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-    });
-});
+// ybotq.push(function() {
+//     googletag.cmd.push(function() {
+//         // googletag.pubads().disableInitialLoad();
+//         googletag.pubads().enableAsyncRendering();
+//         googletag.pubads().enableSingleRequest();
+//         googletag.pubads().collapseEmptyDivs();
+//         googletag.enableServices();
+//     });
+// });
