@@ -3,6 +3,9 @@ ami.mensfitness = ami.mensfitness || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
+
+
+/* Updated 10/22/2015 4:57pm */
 ami.mensfitness.ads = (function() {
     return {
         slots: {},
