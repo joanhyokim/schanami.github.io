@@ -69,9 +69,9 @@ ami.mensfitness.ads = (function() {
             ybotq.push(function() {
                 googletag.cmd.push(function() {
                     // googletag.pubads().disableInitialLoad();
-                    googletag.pubads().enableAsyncRendering();
-                    googletag.pubads().enableSingleRequest();
-                    googletag.pubads().collapseEmptyDivs();
+                    // googletag.pubads().enableAsyncRendering();
+                    // googletag.pubads().enableSingleRequest();
+                    // googletag.pubads().collapseEmptyDivs();
 
                     // var targetKW = "";
                     // var targetS1 = Drupal.settings["mfTaboola"]["kargo"]["category"].replace(/-/g,"_");
@@ -105,7 +105,7 @@ ami.mensfitness.ads = (function() {
                         googletag.pubads().setTargeting("test", "on");
                     }
 
-                    googletag.enableServices();
+                    // googletag.enableServices();
 
 
                     var _sf_async_config = {};
@@ -320,7 +320,7 @@ ami.mensfitness.ads = (function() {
                         delete ami.mensfitness.ads.slots[adObject.idSelector];
                     }
 
-                    googletag.enableServices();
+                    // googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
                     // googletag.pubads().enableSingleRequest();
                     // googletag.pubads().collapseEmptyDivs();
@@ -344,7 +344,7 @@ ami.mensfitness.ads = (function() {
                     googletag.display(adObject.idSelector);
                     
                     delete ami.mensfitness.ads.slots[adObject.idSelector];
-                    googletag.enableServices();
+                    // googletag.enableServices();
                     // googletag.pubads().enableAsyncRendering();
 
                     // googletag.pubads().enableSingleRequest();
@@ -508,3 +508,13 @@ if(document.documentElement.clientWidth < 768){
     });
 
 }
+
+ybotq.push(function() {
+    googletag.cmd.push(function() {
+        // googletag.pubads().disableInitialLoad();
+        googletag.pubads().enableAsyncRendering();
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+});
