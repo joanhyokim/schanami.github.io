@@ -4,7 +4,7 @@ var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
 
-/* Updated 10/22/2015 8:03pm */
+/* Updated 10/23/2015 3:13pm */
 ami.mensfitness.ads = (function() {
     return {
         slots: {},
@@ -166,22 +166,35 @@ ami.mensfitness.ads = (function() {
                 }
 
                 if (ad1_top < 250 && ad1_top >= 0 && direction == "down") {
-                    if (leaderboard.getBoundingClientRect().bottom !== 1) {
-                        ad1.setAttribute("style", "position:fixed;top:" + leaderboard_height + "px;z-index:99999;background:#fff;padding-bottom:20px")
-                    } else if (header_height == 83) {
-                        ad1.setAttribute("style", "position:fixed;top:83px;z-index:99999;background:#fff;padding-bottom:20px")
+                    if(document.getElementById("top-ad").classList.contains("nh") && leaderboard.getBoundingClientRect().height !== 1){
+                        var topValue = 82 + parseInt(leaderboard_height);
+                        ad1.setAttribute("style", "position:fixed;top:"+topValue+"px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
+                    }
+                    else if (!document.getElementById("top-ad").classList.contains("nh") && leaderboard.getBoundingClientRect().height !== 1) {
+                        ad1.setAttribute("style", "position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
+                    } else if (header_height == 82) {
+                        ad1.setAttribute("style", "position:fixed;top:82px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
                     } else {
-                        ad1.setAttribute("style", "position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")
+                        ad1.setAttribute("style", "position:fixed;top:0px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
                     }
                     ad2.setAttribute("style", "");
                 }
                 if (ad2_top < 250 && ad2_top >= 0 && direction == "down") {
-                    if (leaderboard.getBoundingClientRect().bottom !== 1) {
-                        ad2.setAttribute("style", "position:fixed;top:" + leaderboard_height + "px;z-index:99999;background:#fff;padding-bottom:20px")
-                    } else if (header_height === 83) {
-                        ad2.setAttribute("style", "position:fixed;top:83px;z-index:99999;background:#fff;padding-bottom:20px")
+                    // if (leaderboard.getBoundingClientRect().bottom !== 1) {
+                    //     ad2.setAttribute("style", "position:fixed;top:" + leaderboard_height + "px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
+                    // } 
+                    if(document.getElementById("top-ad").classList.contains("nh") && leaderboard.getBoundingClientRect().height !== 1){
+                        var topValue = 82 + parseInt(leaderboard_height);
+                        ad2.setAttribute("style", "position:fixed;top:"+topValue+"px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
+                    }                    
+                    else if (!document.getElementById("top-ad").classList.contains("nh") && leaderboard.getBoundingClientRect().height !== 1) {
+
+                        ad2.setAttribute("style", "position:fixed;top:"+leaderboard_height+"px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
+                    } 
+                    else if (header_height === 82) {
+                        ad2.setAttribute("style", "position:fixed;top:82px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
                     } else {
-                        ad2.setAttribute("style", "position:fixed;top:0px;z-index:99999;background:#fff;padding-bottom:20px")
+                        ad2.setAttribute("style", "position:fixed;top:0px;z-index:99999;background:#fff;padding-top:20px;padding-bottom:20px")
                     }
                     ad1.setAttribute("style", "");
                 }
@@ -223,9 +236,9 @@ ami.mensfitness.ads = (function() {
         },
         addSlot: function(adObject) {
             var lazyLoad = adObject.lazyload;
-            var targeting = adObject.targeting; 
+            var targeting = adObject.targeting;
             googletag.cmd.push(function() {
-                
+
 
                 ami.mensfitness.ads.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
@@ -236,7 +249,7 @@ ami.mensfitness.ads = (function() {
 
 
                 if (lazyload !== "true") {
-                    
+
 
                     googletag.display(adObject.idSelector);
                     delete ami.mensfitness.ads.slots[adObject.idSelector];
