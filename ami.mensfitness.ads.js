@@ -15,9 +15,16 @@ ami.mensfitness.ads = (function() {
         },
         initialize: function() {
 
-            var useSSL = 'https:' == document.location.protocol;
-            var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+              (function() {
+                var gads = document.createElement('script');
+                gads.async = true;
+                gads.type = 'text/javascript';
+                var useSSL = 'https:' == document.location.protocol;
+                gads.src = (useSSL ? 'https:' : 'http:') +
+                  '//www.googletagservices.com/tag/js/gpt.js';
+                var node = document.getElementsByTagName('script')[0];
+                node.parentNode.insertBefore(gads, node);
+              })();
 
             googletag.cmd.push(function() {
 
@@ -235,7 +242,7 @@ ami.mensfitness.ads = (function() {
             });
         },
         addSlot: function(adObject) {
-            var lazyLoad = adObject.lazyload;
+            var lazyload = adObject.lazyload;
             var targeting = adObject.targeting;
             googletag.cmd.push(function() {
 
