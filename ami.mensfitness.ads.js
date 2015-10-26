@@ -242,6 +242,9 @@ ami.mensfitness.ads = (function() {
             });
         },
         addSlot: function(adObject) {
+            if(document.getElementById(adObject.idSelector) == null)){
+                return;
+            }
             var lazyload = adObject.lazyload;
             var targeting = adObject.targeting;
             googletag.cmd.push(function() {
