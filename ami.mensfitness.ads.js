@@ -394,21 +394,21 @@ if (document.documentElement.clientWidth < 768) {
 
         ]
     });
-    if(document.getElementById("dfp-ad-mobile_box") !== null){
-        ami.mensfitness.ads.addSlot({
-            slotName: "mobile_box",
-            adUnit: "/4216/mob.mensfitness" + adUnit,
-            sizes: [
-                [300, 250]
-            ],
-            idSelector: "dfp-ad-mobile_box",
-            lazyload: "false",
-            targeting: [
+    // if(document.getElementById("dfp-ad-mobile_box") !== null){
+    //     ami.mensfitness.ads.addSlot({
+    //         slotName: "mobile_box",
+    //         adUnit: "/4216/mob.mensfitness" + adUnit,
+    //         sizes: [
+    //             [300, 250]
+    //         ],
+    //         idSelector: "dfp-ad-mobile_box",
+    //         lazyload: "false",
+    //         targeting: [
     
-                ["pos", "mobile_box"]
-            ]
-        });
-    }
+    //             ["pos", "mobile_box"]
+    //         ]
+    //     });
+    // }
 
     ami.mensfitness.ads.addSlot({
         slotName: "mobile_bottom",
