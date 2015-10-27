@@ -259,11 +259,11 @@ ami.mensfitness.ads = (function() {
             googletag.cmd.push(function() {
 
 
-                ami.mensfitness.ads.slots[adObject.idSelector] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
+                ami.mensfitness.ads.slots[adObject.slotName] = googletag.defineSlot(adObject.adUnit, adObject.sizes, adObject.idSelector).addService(googletag.pubads());
 
                 for (var i = 0, len = targeting.length; i < len; i++) {
                     var target = targeting[i];
-                    ami.mensfitness.ads.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                    ami.mensfitness.ads.slots[adObject.slotName].setTargeting(target[0], target[1]);
                 }
             });
 
@@ -271,7 +271,7 @@ ami.mensfitness.ads = (function() {
                 Headertag_defer_queue.push(function() {
                     googletag.cmd.push(function(){
                         googletag.display(adObject.idSelector);
-                        delete ami.mensfitness.ads.slots[adObject.idSelector];
+                        delete ami.mensfitness.ads.slots[adObject.slotName];
                     });
                 });
             }
@@ -282,18 +282,18 @@ ami.mensfitness.ads = (function() {
 
             googletag.cmd.push(function() {
 
-                ami.mensfitness.ads.slots[adObject.idSelector] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
+                ami.mensfitness.ads.slots[adObject.slotName] = googletag.defineOutOfPageSlot(adObject.adUnit, adObject.idSelector).addService(googletag.pubads());
                 var targeting = adObject.targeting;
 
                 for (var i = 0, len = targeting.length; i < len; i++) {
                     var target = targeting[i];
-                    ami.mensfitness.ads.slots[adObject.idSelector].setTargeting(target[0], target[1]);
+                    ami.mensfitness.ads.slots[adObject.slotName].setTargeting(target[0], target[1]);
                 }
             });
             Headertag_defer_queue.push(function() {
                 googletag.cmd.push(function() {
                     googletag.display(adObject.idSelector);
-                    delete ami.mensfitness.ads.slots[adObject.idSelector];
+                    delete ami.mensfitness.ads.slots[adObject.slotName];
                 });
             });
 
