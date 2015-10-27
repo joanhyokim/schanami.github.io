@@ -232,7 +232,7 @@ ami.mensfitness.ads = (function() {
                             document.getElementById("alert1").innerHTML = "unsticking 1st condition";
                             ad1.setAttribute("style","position:inherit !important;");
                             below_ad.setAttribute("style","padding-top:inherit !important;");                        
-                        },16000);
+                        },6000);
                     }
                     else {
                         below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
@@ -242,7 +242,7 @@ ami.mensfitness.ads = (function() {
                             document.getElementById("alert1").innerHTML = "unsticking 2nd condition";
                             ad1.setAttribute("style","position:inherit !important;");
                             below_ad.setAttribute("style","padding-top:inherit !important;");                        
-                        },16000);                        
+                        },6000);                        
                     }
                 }
             }); 
@@ -268,7 +268,7 @@ ami.mensfitness.ads = (function() {
                             document.getElementById("alert1").innerHTML = "unsticking 1st condition";
                             ad1.setAttribute("style","position:inherit !important;");
                             below_ad.setAttribute("style","padding-top:inherit !important;");                        
-                        },16000);
+                        },6000);
                     }
                     else {
                         below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
@@ -278,7 +278,7 @@ ami.mensfitness.ads = (function() {
                             document.getElementById("alert1").innerHTML = "unsticking 2nd condition";
                             ad1.setAttribute("style","position:inherit !important;");
                             below_ad.setAttribute("style","padding-top:inherit !important;");                        
-                        },16000);                        
+                        },6000);                        
                     }                    
                 }
             });
