@@ -4,7 +4,7 @@ var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
 
-/* Updated 10/23/2015 3:13pm */
+/* Updated 10/27/2015 5:13pm */
 ami.mensfitness.ads = (function() {
     return {
         slots: {},
@@ -220,14 +220,29 @@ ami.mensfitness.ads = (function() {
                     var paddingTop = (ad1.getBoundingClientRect().bottom - below_ad.getBoundingClientRect().top);
                     document.getElementById("console3").innerHTML = paddingTop;
                     // if(paddingTop > 300){
-                    if(below_ad.getBoundingClientRect().top < 0){
-                        ad1.setAttribute("style","position:inherit !important;");
-                        below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                    if(below_ad.getBoundingClientRect().top > 0){
+                    //     ad1.setAttribute("style","position:inherit !important;");
+                    //     below_ad.setAttribute("style","padding-top:inherit !important;");                        
 
-                        if(ad1.getBoundingClientRect().bottom == below_ad.getBoundingClientRect().top){
-                        }                        
-                    } else {
+                    // } else {
                         below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
+
+                        setTimeout(function(){
+                            // alert("unstick");
+                            document.getElementById("alert1").innerHTML = "unsticking 1st condition";
+                            ad1.setAttribute("style","position:inherit !important;");
+                            below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                        },16000);
+                    }
+                    else {
+                        below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
+
+                        setTimeout(function(){
+                            // alert("unstick");
+                            document.getElementById("alert1").innerHTML = "unsticking 2nd condition";
+                            ad1.setAttribute("style","position:inherit !important;");
+                            below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                        },16000);                        
                     }
                 }
             }); 
@@ -241,15 +256,30 @@ ami.mensfitness.ads = (function() {
                     var paddingTop = (ad1.getBoundingClientRect().bottom - below_ad.getBoundingClientRect().top);
                     document.getElementById("console3a").innerHTML = paddingTop;
                     // if(paddingTop > 300){
-                    if(below_ad.getBoundingClientRect().top < 0){
-                        ad1.setAttribute("style","position:inherit !important;");
-                        below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                    if(below_ad.getBoundingClientRect().top > 0){
+                    //     ad1.setAttribute("style","position:inherit !important;");
+                    //     below_ad.setAttribute("style","padding-top:inherit !important;");                        
 
-                        if(ad1.getBoundingClientRect().bottom == below_ad.getBoundingClientRect().top){
-                        }                        
-                    } else {
+                    // } else {
                         below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
+
+                        setTimeout(function(){
+                            // alert("unstick");
+                            document.getElementById("alert1").innerHTML = "unsticking 1st condition";
+                            ad1.setAttribute("style","position:inherit !important;");
+                            below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                        },16000);
                     }
+                    else {
+                        below_ad.setAttribute("style","padding-top:"+paddingTop+"px");
+
+                        setTimeout(function(){
+                            // alert("unstick");
+                            document.getElementById("alert1").innerHTML = "unsticking 2nd condition";
+                            ad1.setAttribute("style","position:inherit !important;");
+                            below_ad.setAttribute("style","padding-top:inherit !important;");                        
+                        },16000);                        
+                    }                    
                 }
             });
 
@@ -355,37 +385,37 @@ if (document.documentElement.clientWidth > 768) {
             ["pos", "wallpaper"]
         ]
     });
-    ami.mensfitness.ads.addSlot({
-        slotName: "top_728x90",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [
-            [728, 90],
-            [970, 66],
-            [970, 250]
-        ],
-        idSelector: "dfp-ad-top_728x90",
-        targeting: [
+    // ami.mensfitness.ads.addSlot({
+    //     slotName: "top_728x90",
+    //     adUnit: "/4216/mensfitness" + adUnit,
+    //     sizes: [
+    //         [728, 90],
+    //         [970, 66],
+    //         [970, 250]
+    //     ],
+    //     idSelector: "dfp-ad-top_728x90",
+    //     targeting: [
 
-            ["pos", "top"]
-        ],
-        lazyload: "false"
-    });
+    //         ["pos", "top"]
+    //     ],
+    //     lazyload: "false"
+    // });
 
-    ami.mensfitness.ads.addSlot({
-        slotName: "right1_300x250",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [
-            [300, 250],
-            [300, 600],
-            [300, 1050]
-        ],
-        lazyload: "false",
-        idSelector: "dfp-ad-right1_300x250",
-        targeting: [
+    // ami.mensfitness.ads.addSlot({
+    //     slotName: "right1_300x250",
+    //     adUnit: "/4216/mensfitness" + adUnit,
+    //     sizes: [
+    //         [300, 250],
+    //         [300, 600],
+    //         [300, 1050]
+    //     ],
+    //     lazyload: "false",
+    //     idSelector: "dfp-ad-right1_300x250",
+    //     targeting: [
 
-            ["pos", "right1"]
-        ]
-    });
+    //         ["pos", "right1"]
+    //     ]
+    // });
     ami.mensfitness.ads.addSlot({
         slotName: "right_subscribe_300x195",
         adUnit: "/4216/mensfitness" + adUnit,
