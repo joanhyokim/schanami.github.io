@@ -4,7 +4,8 @@ var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
 
-/* Updated 10/23/2015 3:13pm */
+/* Index Exchange headertag */
+/* 10/26/2015 8:09:27PM */
 ami.mensfitness.ads = (function() {
     return {
         slots: {},
@@ -25,7 +26,15 @@ ami.mensfitness.ads = (function() {
                 var node = document.getElementsByTagName('script')[0];
                 node.parentNode.insertBefore(gads, node);
               })();
-
+            window.Headertag_defer_queue = [];
+            
+            googletag.cmd.push(function() {
+                var script = document.createElement("script"); 
+                script.type = "text/javascript";
+                script.src = "http://js.indexww.com/ht/headertag-ami.js"; 
+                var node = document.getElementsByTagName("script")[0]; 
+                node.parentNode.insertBefore(script, node);
+            });
             googletag.cmd.push(function() {
 
                 googletag.pubads().enableAsyncRendering();
@@ -234,9 +243,12 @@ ami.mensfitness.ads = (function() {
                 //console.log("key: "+key);
                 var el = document.getElementById(key);
                 if (ami.mensfitness.ads.elementInViewport(el)) {
-                    googletag.display(key);
-
-                    delete ami.mensfitness.ads.slots[key];
+                    Headertag_defer_queue.push(function() {
+                        googletag.cmd.push(function () {
+                            googletag.display(key);
+                            delete ami.mensfitness.ads.slots[key];
+                        });
+                    });
 
                 }
             });
@@ -253,17 +265,16 @@ ami.mensfitness.ads = (function() {
                     var target = targeting[i];
                     ami.mensfitness.ads.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                 }
-
-
-                if (lazyload !== "true") {
-
-
-                    googletag.display(adObject.idSelector);
-                    delete ami.mensfitness.ads.slots[adObject.idSelector];
-                }
-
-
             });
+
+            if (lazyload !== "true") {
+                Headertag_defer_queue.push(function() {
+                    googletag.cmd.push(function(){
+                        googletag.display(adObject.idSelector);
+                        delete ami.mensfitness.ads.slots[adObject.idSelector];
+                    });
+                });
+            }
 
 
         },
@@ -278,13 +289,13 @@ ami.mensfitness.ads = (function() {
                     var target = targeting[i];
                     ami.mensfitness.ads.slots[adObject.idSelector].setTargeting(target[0], target[1]);
                 }
-                googletag.display(adObject.idSelector);
-
-                delete ami.mensfitness.ads.slots[adObject.idSelector];
-
             });
-
-
+            Headertag_defer_queue.push(function() {
+                googletag.cmd.push(function() {
+                    googletag.display(adObject.idSelector);
+                    delete ami.mensfitness.ads.slots[adObject.idSelector];
+                });
+            });
 
         }
     }
