@@ -3,6 +3,7 @@ ami.mensfitness = ami.mensfitness || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 
+var adUnit;
 
 /* Updated 11/02/2015 12:28pm */
 ami.mensfitness.ads = (function() {
@@ -13,76 +14,12 @@ ami.mensfitness.ads = (function() {
             return (
             rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight || rect.height))
         },
-        addYieldBotBidProvider: function(){
-            food.addBidProvider({
-                   name: 'yieldbot',
-                   libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
-                   slotParams: {
-                     "/4216/mensfitness" + adUnit + "top_728x90",
-                     "/4216/mensfitness" + adUnit + "right1_300x250",
-                     "/4216/mob.mensfitness" + adUnit + "mobile_top",
-                     "/4216/mob.mensfitness" + adUnit + "mobile_bottom",
-                     "/4216/mob.mensfitness" + adUnit + "mobile_box"
-                   },
-                   init: function(slots, pushBid, done) {
-                       var slotMap = {};
-                       var slotParams = this.slotParams;
-
-                       ybotq.push(function() {
-                        if(document.documentElement.clientWidth >= 768){
-                          yieldbot.pub('4534');
-                        }else{
-                          yieldbot.pub('0651');
-                        };
-                        for (var k = 0; k < slots.length; k++) {
-                                     var slot = slots[k];
-                                     var ybslot = slotParams[slot.name];
-
-                                     yieldbot.defineSlot(ybslot, {
-                                       sizes: slot.sizes
-                                     });
-                                     slotMap[ybslot] = slot.name;
-                                   }
-                               yieldbot.enableAsync();
-                               yieldbot.go();
-                             });
-                             ybotq.push(function() {
-                               var pageSlots = yieldbot.getPageCriteria().split(',');
-                               for (var i = 0; i < pageSlots.length; i++) {
-                                 var slotInfo = pageSlots[i].split(':');
-                                 var slot = slotInfo[0];
-                                 var size = slotInfo[1];
-                                 var bid = 0;
-                                 if (slotInfo.length && slotInfo[2]) {
-                                   bid = parseFloat(slotInfo[2], 10);
-                                 }
-                                 var sizes = size.split('x');
-                                 sizes[0] = parseInt(sizes[0], 10);
-                                 sizes[1] = parseInt(sizes[1], 10);
-                                 // submit my bid...
-                                 var bidObject = {
-                                   slot: slotMap[slot] || 'undefined_slot',
-                                   value: bid,
-                                   sizes: sizes,
-                                   targeting: {
-                                     ybot_size: size,
-                                     ybot_cpm: bid,
-                                     ybot_ad: 'y',
-                                     ybot_slot: slot
-                                   }
-                                 };
-                                 pushBid(bidObject);
-                               }
-                           done();
-                       });
-                   },
-                   refresh: function(slots, pushBid, done) {
-                   }
-               });
+        addYieldBotBidProvider: function(adUnit){
+            
         },
         initialize: function() {
 
-            this.addYieldBotBidProvider();
+            // this.addYieldBotBidProvider();
 
             (function() {
                 var gads = document.createElement('script');
@@ -325,12 +262,79 @@ ami.mensfitness.ads = (function() {
 ami.mensfitness.ads.initialize();
 
 
-var adUnit;
+// var adUnit;
 if (ads_targeting["s2"]) {
     adUnit = "/" + ads_targeting["s1"] + "/" + ads_targeting["s2"];
 } else {
     adUnit = "/" + ads_targeting["s1"];
 }
+var food = new pubfood();
+food.addBidProvider({
+   name: 'yieldbot',
+   libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
+   slotParams: [
+     "/4216/mensfitness/" + adUnit + "top_728x90",
+     "/4216/mensfitness/" + adUnit + "right1_300x250",
+     "/4216/mob.mensfitness/" + adUnit + "mobile_top",
+     "/4216/mob.mensfitness/" + adUnit + "mobile_bottom",
+     "/4216/mob.mensfitness/" + adUnit + "mobile_box"
+   ],
+   init: function(slots, pushBid, done) {
+       var slotMap = {};
+       var slotParams = this.slotParams;
+
+       ybotq.push(function() {
+        if(document.documentElement.clientWidth >= 768){
+          yieldbot.pub('4534');
+        }else{
+          yieldbot.pub('0651');
+        };
+        for (var k = 0; k < slots.length; k++) {
+                     var slot = slots[k];
+                     var ybslot = slotParams[slot.name];
+
+                     yieldbot.defineSlot(ybslot, {
+                       sizes: slot.sizes
+                     });
+                     slotMap[ybslot] = slot.name;
+                   }
+               yieldbot.enableAsync();
+               yieldbot.go();
+             });
+             ybotq.push(function() {
+               var pageSlots = yieldbot.getPageCriteria().split(',');
+               for (var i = 0; i < pageSlots.length; i++) {
+                 var slotInfo = pageSlots[i].split(':');
+                 var slot = slotInfo[0];
+                 var size = slotInfo[1];
+                 var bid = 0;
+                 if (slotInfo.length && slotInfo[2]) {
+                   bid = parseFloat(slotInfo[2], 10);
+                 }
+                 var sizes = size.split('x');
+                 sizes[0] = parseInt(sizes[0], 10);
+                 sizes[1] = parseInt(sizes[1], 10);
+                 // submit my bid...
+                 var bidObject = {
+                   slot: slotMap[slot] || 'undefined_slot',
+                   value: bid,
+                   sizes: sizes,
+                   targeting: {
+                     ybot_size: size,
+                     ybot_cpm: bid,
+                     ybot_ad: 'y',
+                     ybot_slot: slot
+                   }
+                 };
+                 pushBid(bidObject);
+               }
+           done();
+       });
+   },
+   refresh: function(slots, pushBid, done) {
+   }
+});
+// ami.mensfitness.ads.addYieldBotBidProvider(adUnit);
 
 if (document.documentElement.clientWidth >= 768) {
     ami.mensfitness.ads.addOOPSlot({
