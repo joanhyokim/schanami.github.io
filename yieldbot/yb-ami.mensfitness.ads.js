@@ -15,18 +15,17 @@ if (ads_targeting["s2"]) {
 
 var food = new pubfood();
 food.addSlot({
-       name: '4216/mensfitness/'+adUnit+'top_728x90',
+       name: '4216/mensfitness'+adUnit+'top_728x90',
        sizes: [
             [728, 90],
             [970, 66],
+            [970, 90],
             [970, 250]
        ],
        elementId: 'dfp-ad-top_728x90',
        bidProviders: ["yieldbot"]
 });
 
-var obj = {};
-obj["/4216/mensfitness/" + adUnit] = "top_728x90";
 
 food.addBidProvider({
    name: 'yieldbot',
@@ -87,6 +86,11 @@ food.addBidProvider({
    refresh: function(slots, pushBid, done) {
    }
 });
+
+
+
+var obj = {};
+obj["/4216/mensfitness/" + adUnit] = "top_728x90";
 
 
 food.setAuctionProvider({
