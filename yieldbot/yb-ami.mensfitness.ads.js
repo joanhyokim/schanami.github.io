@@ -2,7 +2,7 @@ var ami = ami || {};
 ami.mensfitness = ami.mensfitness || {};
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
-
+var ybotq = ybotq || [];
 var adUnit;
 
 /* Updated 11/02/2015 12:28pm */
@@ -269,6 +269,17 @@ if (ads_targeting["s2"]) {
     adUnit = "/" + ads_targeting["s1"];
 }
 var food = new pubfood();
+food.addSlot({
+       name: '4216/mensfitness/'+adUnit+'top_728x90',
+       sizes: [
+            [728, 90],
+            [970, 66],
+            [970, 250]
+       ],
+       elementId: 'dfp-ad-top_728x90',
+       bidProviders: ["yieldbot"]
+});
+
 food.addBidProvider({
    name: 'yieldbot',
    libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
@@ -335,6 +346,48 @@ food.addBidProvider({
    }
 });
 // ami.mensfitness.ads.addYieldBotBidProvider(adUnit);
+
+food.setAuctionProvider({
+     name: 'Google',
+     libUri: '//www.googletagservices.com/tag/js/gpt.js',
+     init: function(targeting, done) {
+           googletag.cmd.push(function() {
+             var i;
+             for (i = 0; i < targeting.length; i++) {
+               var slot = targeting[i];
+
+               var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
+                 .addService(googletag.pubads());
+
+               for (var p in slot.targeting) {
+                 gptslot.setTargeting(p, slot.targeting[p]);
+               }
+             }
+           });
+           googletag.cmd.push(function() {
+             googletag.enableServices();
+             done();
+           });
+       },
+       refresh: function(targeting, done) {
+
+
+       }
+   });
+
+
+food.timeout(1500);
+food.observe(function(ev) {
+  console.log(ev);
+});
+food.start();
+
+food.observe('AUCTION_POST_RUN', function() {
+  auctionProviderOne.cmd.push(function() {
+    auctionProviderOne.display('dfp-ad-top_728x90');
+  });
+});
+
 
 if (document.documentElement.clientWidth >= 768) {
     ami.mensfitness.ads.addOOPSlot({
