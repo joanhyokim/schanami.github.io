@@ -279,17 +279,17 @@ food.addSlot({
        elementId: 'dfp-ad-top_728x90',
        bidProviders: ["yieldbot"]
 });
-
+var leaderboardAdUnit = adUnit + "/top_728x90";
 food.addBidProvider({
    name: 'yieldbot',
    libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
-   slotParams: [
-     "/4216/mensfitness/" + adUnit + "top_728x90",
-     "/4216/mensfitness/" + adUnit + "right1_300x250",
-     "/4216/mob.mensfitness/" + adUnit + "mobile_top",
-     "/4216/mob.mensfitness/" + adUnit + "mobile_bottom",
-     "/4216/mob.mensfitness/" + adUnit + "mobile_box"
-   ],
+   slotParams: {
+    leaderboardAdUnit: "dfp-tag-horizontal-position-1"
+     // "/4216/mensfitness/" + adUnit + "right1_300x250",
+     // "/4216/mob.mensfitness/" + adUnit + "mobile_top",
+     // "/4216/mob.mensfitness/" + adUnit + "mobile_bottom",
+     // "/4216/mob.mensfitness/" + adUnit + "mobile_box"
+   },
    init: function(slots, pushBid, done) {
        var slotMap = {};
        var slotParams = this.slotParams;
