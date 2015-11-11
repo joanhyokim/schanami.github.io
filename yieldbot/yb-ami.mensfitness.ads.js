@@ -280,16 +280,13 @@ food.addSlot({
        bidProviders: ["yieldbot"]
 });
 var leaderboardAdUnit = adUnit + "/top_728x90";
+var obj = {};
+obj["/4216/mensfitness/" + adUnit] = "top_728x90";
+
 food.addBidProvider({
    name: 'yieldbot',
    libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
-   slotParams: {
-    leaderboardAdUnit: "dfp-tag-horizontal-position-1"
-     // "/4216/mensfitness/" + adUnit + "right1_300x250",
-     // "/4216/mob.mensfitness/" + adUnit + "mobile_top",
-     // "/4216/mob.mensfitness/" + adUnit + "mobile_bottom",
-     // "/4216/mob.mensfitness/" + adUnit + "mobile_box"
-   },
+   slotParams: obj,
    init: function(slots, pushBid, done) {
        var slotMap = {};
        var slotParams = this.slotParams;
@@ -351,6 +348,8 @@ food.setAuctionProvider({
      name: 'Google',
      libUri: '//www.googletagservices.com/tag/js/gpt.js',
      init: function(targeting, done) {
+        console.log("Pubfood");
+            // console.log(targeting);
            googletag.cmd.push(function() {
              var i;
              for (i = 0; i < targeting.length; i++) {
@@ -358,7 +357,8 @@ food.setAuctionProvider({
 
                var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());
-
+                 console.log("pubfood targeting:");
+                 console.dir(slot.targeting);
                for (var p in slot.targeting) {
                  gptslot.setTargeting(p, slot.targeting[p]);
                }
@@ -383,133 +383,8 @@ food.observe(function(ev) {
 food.start();
 
 food.observe('AUCTION_POST_RUN', function() {
-  auctionProviderOne.cmd.push(function() {
-    auctionProviderOne.display('dfp-ad-top_728x90');
+  googletag.cmd.push(function() {
+    googletag.display('dfp-ad-top_728x90');
   });
 });
 
-
-if (document.documentElement.clientWidth >= 768) {
-    ami.mensfitness.ads.addOOPSlot({
-        slotName: "interstitial",
-        adUnit: "/4216/mensfitness" + adUnit,
-        idSelector: "dfp-ad-interstitial",
-        targeting: [
-
-            ["pos", "interstitial"]
-        ]
-    });
-    ami.mensfitness.ads.addOOPSlot({
-        slotName: "wallpaper",
-        adUnit: "/4216/mensfitness" + adUnit,
-        idSelector: "dfp-ad-wallpaper",
-        targeting: [
-
-            ["pos", "wallpaper"]
-        ]
-    });
-    ami.mensfitness.ads.addSlot({
-        slotName: "top_728x90",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [
-            [728, 90],
-            [970, 66],
-            [970, 250]
-        ],
-        idSelector: "dfp-ad-top_728x90",
-        targeting: [
-
-            ["pos", "top"]
-        ],
-        lazyload: "false"
-    });
-
-    ami.mensfitness.ads.addSlot({
-        slotName: "right1_300x250",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [
-            [300, 250],
-            [300, 600],
-            [300, 1050]
-        ],
-        lazyload: "false",
-        idSelector: "dfp-ad-right1_300x250",
-        targeting: [
-
-            ["pos", "right1"]
-        ]
-    });
-    ami.mensfitness.ads.addSlot({
-        slotName: "right_subscribe_300x195",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [300, 195],
-        idSelector: "dfp-ad-right_subscribe_300x195",
-        lazyload: "false",
-        targeting: [
-
-            ["pos", "subscription"]
-        ]
-    });
-    ami.mensfitness.ads.addSlot({
-        slotName: "right2_300x250",
-        adUnit: "/4216/mensfitness" + adUnit,
-        sizes: [300, 250],
-        idSelector: "dfp-ad-right2_300x250",
-        lazyload: "true",
-        targeting: [
-
-            ["pos", "right2"]
-        ]
-    });
-
-
-}
-
-
-
-
-if (document.documentElement.clientWidth < 768) {
-    ami.mensfitness.ads.addSlot({
-        slotName: "mobile_top",
-        adUnit: "/4216/mob.mensfitness" + adUnit,
-        sizes: [
-            [320, 50],
-            [300, 50],
-            [300, 100]
-        ],
-        idSelector: "dfp-ad-mobile_top",
-        lazyload: "false",
-        targeting: [
-
-            ["pos", "mobile_top"]
-
-        ]
-    });
-
-    ami.mensfitness.ads.addSlot({
-        slotName: "mobile_bottom",
-        adUnit: "/4216/mob.mensfitness" + adUnit,
-        sizes: [
-            [300, 50],
-            [320, 50],
-            [300, 100]
-        ],
-        idSelector: "dfp-ad-mobile_bottom",
-        lazyload: "false",
-        targeting: [
-
-            ["pos", "mobile_bottom"]
-        ]
-    });
-
-    ami.mensfitness.ads.addOOPSlot({
-        slotName: "mobile_interstitial",
-        adUnit: "/4216/mob.mensfitness" + adUnit,
-        idSelector: "dfp-ad-mobile_interstitial",
-        targeting: [
-
-            ["pos", "mobile_interstitial"]
-        ]
-    });
-
-}
