@@ -272,15 +272,15 @@ if (document.documentElement.clientWidth >= 768) {
 			    ["pos", "interstitial"]
         ]
 		});
-    ami.mensfitness.ads.addOOPSlot({
-	    slotName: "wallpaper",
-		adUnit: "/4216/mensfitness" + adUnit,
-		idSelector: "dfp-ad-wallpaper",
-		targeting: [
+  //   ami.mensfitness.ads.addOOPSlot({
+	 //    slotName: "wallpaper",
+		// adUnit: "/4216/mensfitness" + adUnit,
+		// idSelector: "dfp-ad-wallpaper",
+		// targeting: [
 
-			    ["pos", "wallpaper"]
-        ]
-		});
+		// 	    ["pos", "wallpaper"]
+  //       ]
+		// });
     ami.mensfitness.ads.addSlot({
 	    slotName: "top_728x90",
 		adUnit: "/4216/mensfitness" + adUnit,
