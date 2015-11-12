@@ -14,17 +14,25 @@ if (ads_targeting["s2"]) {
 }
 
 var food = new pubfood();
+
+
 food.addSlot({
-       name: '4216/mensfitness'+adUnit+'top_728x90',
+       name: '4216/mensfitness'+adUnit+'/top_728x90',
        sizes: [
             [728, 90],
             [970, 66],
             [970, 90],
             [970, 250]
        ],
+       lazyload: "false",
+       targeting: [["pos", "leaderboard"]],
        elementId: 'dfp-ad-top_728x90',
        bidProviders: ["yieldbot"]
 });
+
+
+
+
 
 
 food.addBidProvider({
@@ -87,27 +95,25 @@ food.addBidProvider({
    }
 });
 
-
-
 var obj = {};
-obj["/4216/mensfitness/" + adUnit] = "top_728x90";
+obj["/4216/mensfitness" + adUnit] = "top_728x90";
 
 
 food.setAuctionProvider({
      name: 'Google',
      libUri: '//www.googletagservices.com/tag/js/gpt.js',
      init: function(targeting, done) {
-        console.log("Pubfood");
-            // console.log(targeting);
+
            googletag.cmd.push(function() {
              var i;
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
-
+               console.dir(slot);
+               console.log("lazyload: ");
+               console.dir(slot.lazyload);
                var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());
-                 console.log("pubfood targeting:");
-                 console.dir(slot.targeting);
+                 console.dir("pubfood targeting: "+slot.targeting);
                for (var p in slot.targeting) {
                  gptslot.setTargeting(p, slot.targeting[p]);
                }
