@@ -6,6 +6,7 @@ var ybotq = ybotq || [];
 var adUnit;
 
 
+var gpt_targeting = {};
 
 if (ads_targeting["s2"]) {
     adUnit = "/" + ads_targeting["s1"] + "/" + ads_targeting["s2"];
@@ -24,14 +25,12 @@ food.addSlot({
             [970, 90],
             [970, 250]
        ],
-       lazyload: "false",
-       targeting: [["pos", "leaderboard"]],
        elementId: 'dfp-ad-top_728x90',
        bidProviders: ["yieldbot"]
 });
 
 
-
+gpt_targeting["dfp-ad-top_728x90"] = [["pos","top"]];
 
 
 
@@ -108,15 +107,16 @@ food.setAuctionProvider({
              var i;
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
-               console.dir(slot);
-               console.log("lazyload: ");
-               console.dir(slot.lazyload);
                var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());
-                 console.dir("pubfood targeting: "+slot.targeting);
-               for (var p in slot.targeting) {
-                 gptslot.setTargeting(p, slot.targeting[p]);
-               }
+
+                 for(i = 0; i < gpt_targeting[slot.elementId].length; i++){
+                  pair = gpt_targeting[slot.elementId][i];
+                  key = pair[0];
+                  value = pair[1];
+                 gptslot.setTargeting(key,value);
+
+                 }
              }
            });
            googletag.cmd.push(function() {
