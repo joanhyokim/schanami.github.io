@@ -30,17 +30,31 @@ food.addSlot({
 });
 
 
-food.addSlot({
-       name: '4216/mensfitness'+adUnit + "/right1",
-       sizes: [
+ googletag.cmd.push(function() {
+    googletag.defineSlot('/4216/mensfitness'+adUnit, 
+      [
             [300, 250],
             [300, 251],
             [300, 600],
-            [300, 1050]
-       ],
-       elementId: 'dfp-ad-right1_300x250',
-       bidProviders: ["yieldbot"]
-});
+            [300, 1050]      
+      ], 
+      'dfp-ad-right1_300x250').addService(googletag.pubads());
+    // googletag.pubads().enableSingleRequest();
+    // googletag.enableServices();
+  });
+
+
+// food.addSlot({
+//        name: '4216/mensfitness'+adUnit + "/right1",
+//        sizes: [
+//             [300, 250],
+//             [300, 251],
+//             [300, 600],
+//             [300, 1050]
+//        ],
+//        elementId: 'dfp-ad-right1_300x250',
+//        bidProviders: ["yieldbot"]
+// });
 
 food.addSlot({
        name: '4216/mensfitness'+adUnit + "/right2",
@@ -63,7 +77,7 @@ food.addBidProvider({
     "dfp-ad-interstitial":"interstitial",
     "dfp-ad-wallpaper":"wallpaper",
     "dfp-ad-top_728x90": "top_728x90",
-    "dfp-ad-right1_300x250":"right1_300x250",
+    // "dfp-ad-right1_300x250":"right1_300x250",
     "dfp-ad-right2_300x250":"right2_300x250",
     "dfp-ad-mobile_top":"mobile_top",
     "dfp-ad-mobile_bottom":"mobile_bottom",
@@ -135,7 +149,7 @@ food.setAuctionProvider({
       "dfp-ad-interstitial": [["pos","interstitial"]],
       "dfp-ad-wallpaper": [["pos","wallpaper"]],
       "dfp-ad-top_728x90": [["pos","top"]],
-      "dfp-ad-right1_300x250": [["pos","right1"]],
+      // "dfp-ad-right1_300x250": [["pos","right1"]],
       "dfp-ad-right2_300x250": [["pos","right2"]],
       "dfp-ad-mobile_top": [["pos","mobile_top"]],
       "dfp-ad-mobile_box": [["pos","mobile_box"]],
