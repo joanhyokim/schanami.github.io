@@ -92,7 +92,9 @@ food.addBidProvider({
                yieldbot.go();
              });
              ybotq.push(function() {
-               var pageSlots = yieldbot.getPageCriteria().split(',');
+                var pageCriteria = yieldbot.getPageCriteria();
+                var pageSlots = pageCriteria !== '' ? pageCriteria.split(',') : [];
+
                for (var i = 0; i < pageSlots.length; i++) {
                  var slotInfo = pageSlots[i].split(':');
                  var slot = slotInfo[0];
