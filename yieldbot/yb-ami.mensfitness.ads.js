@@ -18,7 +18,7 @@ var food = new pubfood();
 
 
 food.addSlot({
-       name: '4216/mensfitness'+adUnit+'/top_728x90',
+       name: '4216/mensfitness'+adUnit + "/728x90",
        sizes: [
             [728, 90],
             [970, 66],
@@ -30,14 +30,45 @@ food.addSlot({
 });
 
 
-gpt_targeting["dfp-ad-top_728x90"] = [["pos","top"]];
+food.addSlot({
+       name: '4216/mensfitness'+adUnit + "/right1",
+       sizes: [
+            [300, 250],
+            [300, 251],
+            [300, 600],
+            [300, 1050]
+       ],
+       elementId: 'dfp-ad-right1_300x250',
+       bidProviders: ["yieldbot"]
+});
+
+food.addSlot({
+       name: '4216/mensfitness'+adUnit + "/right2",
+       sizes: [
+            [300, 250],
+            [300, 252]
+       ],
+       elementId: 'dfp-ad-right2_300x250',
+       bidProviders: ["yieldbot"]
+});
+
+
 
 
 
 food.addBidProvider({
    name: 'yieldbot',
    libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
-   slotParams: obj,
+   slotParams: {
+    "dfp-ad-interstitial":"interstitial",
+    "dfp-ad-wallpaper":"wallpaper",
+    "dfp-ad-top_728x90": "top_728x90",
+    "dfp-ad-right1_300x250":"right1_300x250",
+    "dfp-ad-right2_300x250":"right2_300x250",
+    "dfp-ad-mobile_top":"mobile_top",
+    "dfp-ad-mobile_bottom":"mobile_bottom",
+    "dfp-ad-mobile_interstitia":"mobile_interstitial"
+    },
    init: function(slots, pushBid, done) {
        var slotMap = {};
        var slotParams = this.slotParams;
@@ -94,15 +125,23 @@ food.addBidProvider({
    }
 });
 
-var obj = {};
-obj["/4216/mensfitness" + adUnit] = "top_728x90";
-
 
 food.setAuctionProvider({
      name: 'Google',
      libUri: '//www.googletagservices.com/tag/js/gpt.js',
+     targeting: {
+      "dfp-ad-interstitial": [["pos","interstitial"]],
+      "dfp-ad-wallpaper": [["pos","wallpaper"]],
+      "dfp-ad-top_728x90": [["pos","top"]],
+      "dfp-ad-right1_300x250": [["pos","right1"]],
+      "dfp-ad-right2_300x250": [["pos","right2"]],
+      "dfp-ad-mobile_top": [["pos","mobile_top"]],
+      "dfp-ad-mobile_box": [["pos","mobile_box"]],
+      "dfp-ad-mobile_bottom": [["pos","mobile_bottom"]],
+      "dfp-ad-mobile_interstitial": [["pos","mobile_interstitial"]]
+     },
      init: function(targeting, done) {
-
+          var gpt_targeting = this.targeting;
            googletag.cmd.push(function() {
              var i;
              for (i = 0; i < targeting.length; i++) {
@@ -140,6 +179,8 @@ food.start();
 food.observe('AUCTION_POST_RUN', function() {
   googletag.cmd.push(function() {
     googletag.display('dfp-ad-top_728x90');
+    googletag.display('dfp-ad-right1_300x250');
+    googletag.display('dfp-ad-right2_300x250');
   });
 });
 
