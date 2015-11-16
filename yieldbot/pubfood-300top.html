@@ -297,7 +297,6 @@ food.setAuctionProvider({
              var i;
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
-               // alert(slot.elementId);
                if(oop_slots.indexOf(slot.elementId) === 1){
                 alert(slot.elementId);
                 gptslot = googletag.defineOutOfPageSlot(slot.name, slot.elementId)
@@ -341,6 +340,8 @@ food.observe('AUCTION_POST_RUN', function() {
     googletag.display('dfp-ad-top_728x90');
     googletag.display('dfp-ad-right1_300x250');
     googletag.display('dfp-ad-right2_300x250');
+    googletag.display('dfp-ad-interstitial');
+    googletag.display('dfp-ad-wallpaper');
   });
 });
 
