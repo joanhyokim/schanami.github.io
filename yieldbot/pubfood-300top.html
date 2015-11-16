@@ -171,7 +171,7 @@ food.addSlot({
             [1, 1]
         ],        
         elementId: 'dfp-ad-interstitial',
-        bidProviders: ["yieldbot"]
+        bidProviders: []
 });
 
 food.addSlot({
@@ -180,7 +180,7 @@ food.addSlot({
             [1, 1]
         ],
         elementId: 'dfp-ad-wallpaper',
-        bidProviders: ["yieldbot"]
+        bidProviders: []
 });
 
 
@@ -278,7 +278,7 @@ food.setAuctionProvider({
       "dfp-ad-wallpaper": [["pos","wallpaper"]],
       "dfp-ad-top_728x90": [["pos","top"]],
       "dfp-ad-right1_300x250": [["pos","right1"]],
-      "dfp-ad-right1_300x250": [["pos","right2"]],
+      "dfp-ad-right2_300x250": [["pos","right2"]],
       "dfp-ad-mobile_top": [["pos","mobile_top"]],
       "dfp-ad-mobile_box": [["pos","mobile_box"]],
       "dfp-ad-mobile_bottom": [["pos","mobile_bottom"]]
@@ -298,7 +298,7 @@ food.setAuctionProvider({
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
                if(oop_slots.indexOf(slot.elementId) === 1){
-                alert(slot.elementId);
+
                 gptslot = googletag.defineOutOfPageSlot(slot.name, slot.elementId)
                  .addService(googletag.pubads());
 
