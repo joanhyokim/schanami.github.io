@@ -272,8 +272,8 @@ food.setAuctionProvider({
                var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());
 
-                 for(i = 0; i < gpt_targeting[slot.elementId].length; i++){
-                  pair = gpt_targeting[slot.elementId][i];
+                 for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
+                  pair = gpt_targeting[slot.elementId][j];
                   key = pair[0];
                   value = pair[1];
                  gptslot.setTargeting(key,value);
