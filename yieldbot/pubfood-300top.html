@@ -166,6 +166,26 @@ food.addSlot({
 });
 
 food.addSlot({
+        name: '4216/mensfitness'+adUnit,
+        sizes: [
+            [1, 1]
+        ],        
+        elementId: 'dfp-ad-interstitial',
+        bidProviders: ["yieldbot"]
+});
+
+food.addSlot({
+        name: '4216/mensfitness'+adUnit,
+        sizes: [
+            [1, 1]
+        ],
+        elementId: 'dfp-ad-wallpaper',
+        bidProviders: ["yieldbot"]
+});
+
+
+
+food.addSlot({
        name: '4216/mensfitness'+adUnit,
        sizes: [
             [300, 250],
@@ -263,14 +283,31 @@ food.setAuctionProvider({
       "dfp-ad-mobile_box": [["pos","mobile_box"]],
       "dfp-ad-mobile_bottom": [["pos","mobile_bottom"]]
      },
+     oop: [
+      "dfp-ad-interstitial",
+      "dfp-ad-wallpaper"
+     ],
      init: function(targeting, done) {
           var gpt_targeting = this.targeting;
+          var oop_slots = this.oop;
+          var gptslot;
+          // window.oop_slots = this.oop;
+
            googletag.cmd.push(function() {
              var i;
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
-               var gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
+               // alert(slot.elementId);
+               if(oop_slots.indexOf(slot.elementId) === 1){
+                alert(slot.elementId);
+                gptslot = googletag.defineOutOfPageSlot(slot.name, slot.elementId)
                  .addService(googletag.pubads());
+
+               }
+               else {
+                gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
+                 .addService(googletag.pubads());                
+               }
 
                  for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
                   pair = gpt_targeting[slot.elementId][j];
