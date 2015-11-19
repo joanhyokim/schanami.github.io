@@ -165,25 +165,14 @@ food.addSlot({
         bidProviders: ["yieldbot"]
 });
 
-food.addSlot({
-        name: '4216/mensfitness'+adUnit,
-        sizes: [
-            [12, 1]
-        ],        
-        elementId: 'dfp-ad-interstitial',
-        bidProviders: []
+
+googletag.cmd.push(function() {
+    googletag.defineOutOfPageSlot('/4216/mensfitness'+adUnit, 'dfp-ad-interstitial').setTargeting('pos', ['interstitial']).addService(googletag.pubads());
 });
 
-food.addSlot({
-        name: '4216/mensfitness'+adUnit,
-        sizes: [
-            [12, 1]
-        ],
-        elementId: 'dfp-ad-wallpaper',
-        bidProviders: []
+googletag.cmd.push(function() {
+    googletag.defineOutOfPageSlot('/4216/mensfitness'+adUnit, 'dfp-ad-wallpaper').setTargeting('pos', ['wallpaper']).addService(googletag.pubads());
 });
-
-
 
 
 food.addSlot({
