@@ -120,10 +120,13 @@ food.addBidProvider({
     name: 'yieldbot',
     libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
     ybParams: {
+        "dfp-ad-interstitial":"interstitial",
+        "dfp-ad-wallpaper":"wallpaper",
         "dfp-ad-top_728x90": "top_728x90",
-        "dfp-ad-right1_300x250": "right1_300x250",
-        "dfp-ad-mobile_top": "mobile_top",
-        "dfp-ad-mobile_bottom": "mobile_bottom"
+        "dfp-ad-right1_300x250":"right1_300x250",
+        "dfp-ad-right2_300x250":"right2_300x250",
+        "dfp-ad-mobile_top":"mobile_top",
+        "dfp-ad-mobile_bottom":"mobile_bottom"
     },
     init: function(slots, pushBid, done) {
         var slotMap = {};
@@ -185,7 +188,7 @@ food.addBidProvider({
 food.setAuctionProvider({
      name: 'Google',
      libUri: '//www.googletagservices.com/tag/js/gpt.js',
-     targeting: {
+     gpt_targeting: {
       "dfp-ad-interstitial": [["pos","interstitial"]],
       "dfp-ad-wallpaper": [["pos","wallpaper"]],
       "dfp-ad-top_728x90": [["pos","top"]],
@@ -200,7 +203,8 @@ food.setAuctionProvider({
       "dfp-ad-wallpaper"
      ],
      init: function(targeting, done) {
-          var gpt_targeting = this.targeting;
+          var gpt_targeting = this.gpt_targeting;
+          var targeting = targeting;
           var oop_slots = this.oop;
           var gptslot;
            googletag.cmd.push(function() {
@@ -242,19 +246,21 @@ food.setAuctionProvider({
 
            googletag.cmd.push(function() {
              var i;
-
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
-               if(oop_slots.indexOf(slot.elementId) === 1){
-                gptslot = googletag.defineOutOfPageSlot(slot.name, slot.elementId)
-                 .addService(googletag.pubads());
 
-               }
-               else {
                 gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());   
+
                  ami.mensfitness.ads.slots[slot.elementId] = gptslot;             
-               }
+
+
+              for (var p in slot.targeting) {
+               // gptslot.setTargeting(p, slot.targeting[p]);
+               console.log(p + "/"+slot.targeting[p]);
+               // console.log("end slot");
+                gptslot.setTargeting(p,slot.targeting[p]);
+              }
 
                  for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
                   pair = gpt_targeting[slot.elementId][j];
