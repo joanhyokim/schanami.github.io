@@ -99,22 +99,22 @@ googletag.cmd.push(function() {
 });
 
 
-googletag.cmd.push(function() {
-    googletag.defineSlot('/4216/mensfitness'+adUnit, 'dfp-ad-right2_300x250').setTargeting('pos', ['right2']).addService(googletag.pubads());
-});
-// food.addSlot({
-//        name: '4216/mensfitness'+adUnit,
-//        sizes: [
-//             [300, 250],
-//             [300, 252]
-//        ],
-//        slotParams: {
-//         "pos":"right2",
-//         "lazyload":"true"
-//        },
-//        elementId: 'dfp-ad-right2_300x250',
-//        bidProviders: []
+// googletag.cmd.push(function() {
+//     googletag.defineSlot('/4216/mensfitness'+adUnit, 'dfp-ad-right2_300x250').setTargeting('pos', ['right2']).addService(googletag.pubads());
 // });
+food.addSlot({
+       name: '4216/mensfitness'+adUnit,
+       sizes: [
+            [300, 250],
+            [300, 252]
+       ],
+       slotParams: {
+        "pos":"right2",
+        "lazyload":"true"
+       },
+       elementId: 'dfp-ad-right2_300x250',
+       bidProviders: []
+});
 
 
 
