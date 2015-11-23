@@ -17,7 +17,7 @@ if (ads_targeting["s2"]) {
 
 ami.mensfitness.ads = (function() {
     return {
-        // slots: {},
+        slots: {},
         elementInViewport: function(el) {
             var rect = el.getBoundingClientRect();
             return (
@@ -25,21 +25,22 @@ ami.mensfitness.ads = (function() {
         },
         processElements: function() {
 
-            var slots = food.getSlots();
+            var slots = ami.mensfitness.ads.slots;
             var slot;
-            for(var i = 0; i < slots.length; i++){
-                slot = slots[i];
-
-                var el = document.getElementById(slot.elementId);
+            Object.keys(ami.mensfitness.ads.slots).forEach(function(key) {
+                var el = document.getElementById(key);
                 if (ami.mensfitness.ads.elementInViewport(el)) {
-          
-                  /* conflict with pubfood */
-                  googletag.cmd.push(function() {
-                    googletag.display(slot.elementId);
-                  });
+                food.observe('AUCTION_POST_RUN', function() {
 
+                  googletag.cmd.push(function() {
+                    googletag.display(key);
+                    console.log("lazy loading: "+key);
+                    delete ami.mensfitness.ads.slots[key];
+
+                  });
+                });
                 }
-            }
+            });
 
         },        
 
@@ -115,77 +116,71 @@ food.addSlot({
 
 
 
-
 food.addBidProvider({
-   name: 'yieldbot',
-   libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
-   slotParams: {
-    "dfp-ad-interstitial":"interstitial",
-    "dfp-ad-wallpaper":"wallpaper",
-    "dfp-ad-top_728x90": "top_728x90",
-    "dfp-ad-right1_300x250":"right1_300x250",
-    "dfp-ad-right2_300x250":"right2_300x250",
-    "dfp-ad-mobile_top":"mobile_top",
-    "dfp-ad-mobile_bottom":"mobile_bottom"
+    name: 'yieldbot',
+    libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
+    ybParams: {
+        "dfp-ad-top_728x90": "top_728x90",
+        "dfp-ad-right1_300x250": "right1_300x250",
+        "dfp-ad-mobile_top": "mobile_top",
+        "dfp-ad-mobile_bottom": "mobile_bottom"
     },
-   init: function(slots, pushBid, done) {
-       var slotMap = {};
-       var slotParams = this.slotParams;
+    init: function(slots, pushBid, done) {
+        var slotMap = {};
+        var ybParams = this.ybParams;
 
-       ybotq.push(function() {
-        if(document.documentElement.clientWidth >= 768){
-          yieldbot.pub('4534');
-        }else{
-          yieldbot.pub('0651');
-        };
-        for (var k = 0; k < slots.length; k++) {
-                     var slot = slots[k];
-                     var ybslot = slotParams[slot.name];
+        ybotq.push(function() {
+            if (document.documentElement.clientWidth >= 768) {
+                yieldbot.pub('4534');
+            } else {
+                yieldbot.pub('0651');
+            };
+            for (var k = 0; k < slots.length; k++) {
+                var slot = slots[k];
+                var ybslot = ybParams[slot.elementId];
 
-                     yieldbot.defineSlot(ybslot, {
-                       sizes: slot.sizes
-                     });
-                     slotMap[ybslot] = slot.name;
-                   }
-               yieldbot.enableAsync();
-               yieldbot.go();
-             });
-             ybotq.push(function() {
-                var pageCriteria = yieldbot.getPageCriteria();
-                var pageSlots = pageCriteria !== '' ? pageCriteria.split(',') : [];
-
-               for (var i = 0; i < pageSlots.length; i++) {
-                 var slotInfo = pageSlots[i].split(':');
-                 var slot = slotInfo[0];
-                 var size = slotInfo[1];
-                 var bid = 0;
-                 if (slotInfo.length && slotInfo[2]) {
-                   bid = parseFloat(slotInfo[2], 10);
-                 }
-                 var sizes = size.split('x');
-                 sizes[0] = parseInt(sizes[0], 10);
-                 sizes[1] = parseInt(sizes[1], 10);
-                 // submit my bid...
-                 var bidObject = {
-                   slot: slotMap[slot] || 'undefined_slot',
-                   value: bid,
-                   sizes: sizes,
-                   targeting: {
-                     ybot_size: size,
-                     ybot_cpm: bid,
-                     ybot_ad: 'y',
-                     ybot_slot: slot
-                   }
-                 };
-                 pushBid(bidObject);
-               }
-           done();
-       });
-   },
-   refresh: function(slots, pushBid, done) {
-   }
+                yieldbot.defineSlot(ybslot, {
+                    sizes: slot.sizes
+                });
+                slotMap[ybslot] = slot.name;
+            }
+            yieldbot.enableAsync();
+            yieldbot.go();
+        });
+        ybotq.push(function() {
+            var pageCriteria = yieldbot.getPageCriteria();
+            var pageSlots = pageCriteria !== '' ? pageCriteria.split(',') : [];
+                
+                for (var i = 0; i < pageSlots.length; i++) {
+                var slotInfo = pageSlots[i].split(':');
+                var slot = slotInfo[0];
+                var size = slotInfo[1];
+                var bid = 0;
+                if (slotInfo.length && slotInfo[2]) {
+                    bid = parseFloat(slotInfo[2], 10);
+                }
+                var sizes = size.split('x');
+                sizes[0] = parseInt(sizes[0], 10);
+                sizes[1] = parseInt(sizes[1], 10);
+                // submit my bid...
+                var bidObject = {
+                    slot: slotMap[slot] || 'undefined_slot',
+                    value: bid,
+                    sizes: sizes,
+                    targeting: {
+                        ybot_size: size,
+                        ybot_cpm: bid,
+                        ybot_ad: 'y',
+                        ybot_slot: slot
+                    }
+                };
+                pushBid(bidObject);
+            }
+            done();
+        });
+    },
+    refresh: function(slots, pushBid, done) {}
 });
-
 
 food.setAuctionProvider({
      name: 'Google',
@@ -209,8 +204,8 @@ food.setAuctionProvider({
           var oop_slots = this.oop;
           var gptslot;
            googletag.cmd.push(function() {
-              // googletag.pubads().enableAsyncRendering();
-              // googletag.pubads().enableSingleRequest();
+              googletag.pubads().enableAsyncRendering();
+              googletag.pubads().enableSingleRequest();
               googletag.pubads().collapseEmptyDivs();
 
 
@@ -257,7 +252,8 @@ food.setAuctionProvider({
                }
                else {
                 gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
-                 .addService(googletag.pubads());                
+                 .addService(googletag.pubads());   
+                 ami.mensfitness.ads.slots[slot.elementId] = gptslot;             
                }
 
                  for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
@@ -292,8 +288,8 @@ food.observe('AUCTION_POST_RUN', function() {
 	    // googletag.display('dfp-ad-top_728x90');
 	    // googletag.display('dfp-ad-right1_300x250');
 	    // googletag.display('dfp-ad-right2_300x250');
-	    // googletag.display('dfp-ad-interstitial');
-	    // googletag.display('dfp-ad-wallpaper');
+	    googletag.display('dfp-ad-interstitial');
+	    googletag.display('dfp-ad-wallpaper');
 	  });
 	} 
 	if (document.documentElement.clientWidth < 768) {
