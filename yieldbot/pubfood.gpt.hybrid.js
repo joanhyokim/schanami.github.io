@@ -99,19 +99,22 @@ googletag.cmd.push(function() {
 });
 
 
-food.addSlot({
-       name: '4216/mensfitness'+adUnit,
-       sizes: [
-            [300, 250],
-            [300, 252]
-       ],
-       slotParams: {
-        "pos":"right2",
-        "lazyload":"true"
-       },
-       elementId: 'dfp-ad-right2_300x250',
-       bidProviders: ["yieldbot"]
+googletag.cmd.push(function() {
+    googletag.defineSlot('/4216/mensfitness'+adUnit, 'dfp-ad-right2_300x250').setTargeting('pos', ['right2']).addService(googletag.pubads());
 });
+// food.addSlot({
+//        name: '4216/mensfitness'+adUnit,
+//        sizes: [
+//             [300, 250],
+//             [300, 252]
+//        ],
+//        slotParams: {
+//         "pos":"right2",
+//         "lazyload":"true"
+//        },
+//        elementId: 'dfp-ad-right2_300x250',
+//        bidProviders: []
+// });
 
 
 
@@ -120,11 +123,11 @@ food.addBidProvider({
     name: 'yieldbot',
     libUri: '//cdn.yldbt.com/js/yieldbot.intent.js',
     ybParams: {
-        "dfp-ad-interstitial":"interstitial",
-        "dfp-ad-wallpaper":"wallpaper",
+        // "dfp-ad-interstitial":"interstitial",
+        // "dfp-ad-wallpaper":"wallpaper",
         "dfp-ad-top_728x90": "top_728x90",
         "dfp-ad-right1_300x250":"right1_300x250",
-        "dfp-ad-right2_300x250":"right2_300x250",
+        // "dfp-ad-right2_300x250":"right2_300x250",
         "dfp-ad-mobile_top":"mobile_top",
         "dfp-ad-mobile_bottom":"mobile_bottom"
     },
@@ -189,23 +192,23 @@ food.setAuctionProvider({
      name: 'Google',
      libUri: '//www.googletagservices.com/tag/js/gpt.js',
      gpt_targeting: {
-      "dfp-ad-interstitial": [["pos","interstitial"]],
-      "dfp-ad-wallpaper": [["pos","wallpaper"]],
+      // "dfp-ad-interstitial": [["pos","interstitial"]],
+      // "dfp-ad-wallpaper": [["pos","wallpaper"]],
       "dfp-ad-top_728x90": [["pos","top"]],
       "dfp-ad-right1_300x250": [["pos","right1"]],
-      "dfp-ad-right2_300x250": [["pos","right2"]],
+      // "dfp-ad-right2_300x250": [["pos","right2"]],
       "dfp-ad-mobile_top": [["pos","mobile_top"]],
       "dfp-ad-mobile_box": [["pos","mobile_box"]],
       "dfp-ad-mobile_bottom": [["pos","mobile_bottom"]]
      },
-     oop: [
-      "dfp-ad-interstitial",
-      "dfp-ad-wallpaper"
-     ],
+     // oop: [
+     //  "dfp-ad-interstitial",
+     //  "dfp-ad-wallpaper"
+     // ],
      init: function(targeting, done) {
           var gpt_targeting = this.gpt_targeting;
           var targeting = targeting;
-          var oop_slots = this.oop;
+          // var oop_slots = this.oop;
           var gptslot;
            googletag.cmd.push(function() {
               googletag.pubads().enableAsyncRendering();
