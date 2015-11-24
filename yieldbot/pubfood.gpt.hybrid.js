@@ -141,6 +141,7 @@ food.addBidProvider({
             } else {
                 yieldbot.pub('0651');
             };
+
             for (var k = 0; k < slots.length; k++) {
                 var slot = slots[k];
                 var ybslot = ybParams[slot.elementId];
@@ -154,13 +155,16 @@ food.addBidProvider({
             yieldbot.go();
         });
         ybotq.push(function() {
+
             var pageCriteria = yieldbot.getPageCriteria();
+            console.dir(pageCriteria);
             var pageSlots = pageCriteria !== '' ? pageCriteria.split(',') : [];
                 
                 for (var i = 0; i < pageSlots.length; i++) {
                 var slotInfo = pageSlots[i].split(':');
                 var slot = slotInfo[0];
                 var size = slotInfo[1];
+                alert(size); 
                 var bid = 0;
                 if (slotInfo.length && slotInfo[2]) {
                     bid = parseFloat(slotInfo[2], 10);
@@ -173,6 +177,7 @@ food.addBidProvider({
                     slot: slotMap[slot] || 'undefined_slot',
                     value: bid,
                     sizes: sizes,
+                    customParam: true,
                     targeting: {
                         ybot_size: size,
                         ybot_cpm: bid,
@@ -207,9 +212,12 @@ food.setAuctionProvider({
      // ],
      init: function(targeting, done) {
           var gpt_targeting = this.gpt_targeting;
-          var targeting = targeting;
+          // var targeting = targeting;
           // var oop_slots = this.oop;
           var gptslot;
+          console.dir(targeting);
+
+
            googletag.cmd.push(function() {
               googletag.pubads().enableAsyncRendering();
               googletag.pubads().enableSingleRequest();
@@ -244,7 +252,7 @@ food.setAuctionProvider({
                   googletag.pubads().setTargeting("test", "on");
               }                
               googletag.enableServices();
-               done();
+               // done();
             });          
 
            googletag.cmd.push(function() {
@@ -252,26 +260,21 @@ food.setAuctionProvider({
              for (i = 0; i < targeting.length; i++) {
                var slot = targeting[i];
 
+
                 gptslot = googletag.defineSlot(slot.name, slot.sizes, slot.elementId)
                  .addService(googletag.pubads());   
 
                  ami.mensfitness.ads.slots[slot.elementId] = gptslot;             
 
 
-              for (var p in slot.targeting) {
-               // gptslot.setTargeting(p, slot.targeting[p]);
-               console.log(p + "/"+slot.targeting[p]);
-               // console.log("end slot");
-                gptslot.setTargeting(p,slot.targeting[p]);
-              }
 
-                 for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
-                  pair = gpt_targeting[slot.elementId][j];
-                  key = pair[0];
-                  value = pair[1];
-                 gptslot.setTargeting(key,value);
+             for(j = 0; j < gpt_targeting[slot.elementId].length; j++){
+              pair = gpt_targeting[slot.elementId][j];
+              key = pair[0];
+              value = pair[1];
+             gptslot.setTargeting(key,value);
 
-                 }
+             }
              }
            });
            done();
@@ -302,7 +305,7 @@ food.observe('AUCTION_POST_RUN', function() {
 	  });
 	} 
 	if (document.documentElement.clientWidth < 768) {
-
+    //insert mobile ad calls
 	}
 });
 
