@@ -47,6 +47,7 @@ ami.mensfitness.ads = (function() {
         init: function(){
           window.addEventListener("scroll",this.processElements);
           window.addEventListener("load",this.processElements);
+          
         }
     }
 })();
@@ -164,7 +165,7 @@ food.addBidProvider({
                 var slotInfo = pageSlots[i].split(':');
                 var slot = slotInfo[0];
                 var size = slotInfo[1];
-                alert(size); 
+ 
                 var bid = 0;
                 if (slotInfo.length && slotInfo[2]) {
                     bid = parseFloat(slotInfo[2], 10);
@@ -222,7 +223,7 @@ food.setAuctionProvider({
               googletag.pubads().enableAsyncRendering();
               googletag.pubads().enableSingleRequest();
               googletag.pubads().collapseEmptyDivs();
-
+              googletag.pubads().setTargeting("ybot",yieldbot.getPageCriteria());
 
               if (typeof ads_targeting["kw"] !== "undefined") {
                   googletag.pubads().setTargeting("kw", ads_targeting["kw"]);
