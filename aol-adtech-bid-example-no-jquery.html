@@ -1,0 +1,251 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Marketplace: Publisher API Tag Library</title>
+  
+//Marketplace Javascript Plugin
+  <script src="http://aka-cdn.adtechus.com/dt/common/DAC.js"></script>
+  
+//DFP GPT Code
+  <script>
+    setTimeout(function() {
+      var gads = document.createElement("script");
+      gads.async = true;
+      gads.type = "text/javascript";
+      var useSSL = "https:" == document.location.protocol;
+      gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+      var node = document.getElementsByTagName("script")[0];
+      node.parentNode.insertBefore(gads, node);
+    }, 50);
+  </script>
+  <script type="text/javascript">
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    var googleslots = [];
+
+    function pubTagLibHandler(response) {
+      var config = response.gpt;
+      var slotName = response.adContainerId;
+      var bidKey = response.bidKey;
+      var mpAlias = response.mpAlias;
+      var cpm = response.cpm;
+
+      /*
+          For Demo purposes.
+      */
+      forDemoPurposesOnly(response)
+
+      if (!response.refreshed || (cpm == null && !config.slot)) {
+        googletag.cmd.push(function() {
+          var slot = googletag.defineSlot(config.adUnitPath, config.size, slotName);
+          slot.addService(googletag.pubads()).setTargeting(bidKey, [cpm]);
+          slot.addService(googletag.pubads()).setTargeting(response.mpAliasKey, [response.alias]);
+          config.slot = slot;
+          googletag.enableServices();
+          googletag.pubads().setTagForChildDirectedTreatment(0);
+          googletag.pubads().enableAsyncRendering();
+          googletag.display(slotName);
+        });
+      } else {
+        if (config.slot) {
+          config.slot.addService(googletag.pubads()).setTargeting(bidKey, [cpm]);
+          config.slot.addService(googletag.pubads()).setTargeting(response.mpAliasKey, [response.alias]);
+          googletag.pubads().refresh([config.slot]);
+        } else {
+          googletag.pubads().refresh();
+        }
+      }
+
+console.log(response);
+    }
+
+//Marketplace Configuration 
+    var bidRequestConfig = {
+      server: 'adserver.adtechus.com',
+      network: '9599.1', //Publisher Network ID
+      bidKey: 'aolbid',
+      loadAd: pubTagLibHandler,
+      loadAdTimeout: 800,
+//Enable adjustment to convert gross to net bids
+      adjustment: 0,
+      formatCpmToDecimal: false,
+//Enable rounding functions
+      roundingConfig: [
+        {from: 0,  to: 999, roundFunction: 'tenCentsRound'},
+        {from: 1000, to: -1, roundValue: 1000}
+      ]
+    };
+
+//Ad unit config
+    var dacBidRequestConfigs = [{
+//Ad unit ID
+      placement: 3611252, 
+//Ad slot ID, it's free definable; it needs to be unique per page
+      alias: '728x90atf',       
+      adContainerId: 'div-gpt-ad-1438955597722-1',
+      secure: false,
+      performScreenDetection: false,  
+      gpt: {
+        adUnitPath: '/4248977/PubApiSecure728x90',
+        size: [728, 90]
+      }
+    }, {
+      placement: 3611253,
+      alias: '300x250atf',
+      adContainerId: 'div-gpt-ad-1438955597722-0',
+      secure: false,
+      performScreenDetection: false,
+      gpt: {
+        adUnitPath: '/4248977/PubAPISecure300x250',
+        size: [300, 250]
+      }
+    }, {
+      placement: 3617677,
+      alias: "300x250btf",
+      adContainerId: 'div-gpt-ad-1439394117151-0',
+      secure: false,
+      performScreenDetection: false,
+      gpt: {
+        adUnitPath: '/4248977/PubAPISecure300x250BTF',
+        size: [300, 250]
+      }
+    }, {
+      placement: 3617719,
+      alias: "728x90btf",
+      adContainerId: 'div-gpt-ad-1439394117151-1',
+      secure: false,
+      performScreenDetection: false,
+      gpt: {
+        adUnitPath: '/4248977/PubAPISecure728x90BTF',
+        size: [728, 90]
+      }
+    }];
+  </script>
+  <script src="http://iqtestsites.adtech.de/sancho/marketplace/pubtaglib.min.js"></script>
+
+  <script>
+    /* Demo */
+
+
+    function forDemoPurposesOnly(response) {
+      console.log('ALIAS: ', response.alias, ' CPM: ', response.cpm);
+
+    /* The ad server should typically handle a null cpm and return a valid ad. */
+    var adContainer = document.querySelector("#"+response.adContainerId);
+    if(response.cpm == null){
+      adContainer.innerHTML = "";
+      adContainer.style.width = response.gpt.size[0];
+      adContainer.style.height = response.gpt.size[1];
+
+      var docFragment = document.createDocumentFragment(); // contains all gathered nodes
+
+      var div = document.createElement('DIV');
+
+      div.setAttribute("style", "width:100%;height:100%;border:solid black 1px;background:#333");
+      docFragment.appendChild(div);
+      adContainer.appendChild(docFragment);
+    }
+  
+  var aliasSpan = adContainer.parentNode.parentNode.querySelector(".alias");
+  aliasSpan.innerHTML = response.alias + '<span class="cpm">CPM: ' + response.cpm + '</span>';
+    
+}
+
+
+  </script>
+
+  <style>
+    html, body {
+      font-family: "Arial", sans-serif;
+      background: #fff;
+    }
+
+    p.adtxt button {
+      margin-right: 10px;
+    }
+
+    #logo {
+      margin-bottom: 50px;
+    }
+
+    #logo img {
+      /*display: block;*/
+      width: 300px;
+      float: left;
+      margin-right: 80px;
+    }
+
+    #reload-all-btn {
+      margin: 20px 0 10px 0;
+      width: 300px;
+      height: 50px;
+    }
+
+    .pane-content {
+      clear: both;
+    }
+
+    .pane-content-mpu {
+      float: left;
+      margin: 20px 125px 35px 0;
+    }
+
+    .cpm {
+      margin-left: 20px;
+    }
+
+    .alias {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+//Div container for asynchronous ad rendering
+<div id="logo">
+  <img src="http://iqtestsites.adtech.de/sancho/marketplace/marketplace_logo_760x220.png" />
+  <button id="reload-all-btn" onClick="ADTECH.refreshPubAds()">Reload All Ads</button>
+  <!--<div><input type="checkbox" value="rounding-demo" /> Rounding demo</div>-->
+</div>
+<div class="pane-content">
+  <p class="adtxt"><button onClick="ADTECH.refreshPubAd('728x90atf');">Reload</button><span class="alias"></span></p>
+  <div class="pane-advertising-wrapper-header" style="text-align:center;">
+    <div id="div-gpt-ad-1438955597722-1">
+      <script type="text/javascript">
+        ADTECH.loadPubAd('728x90atf');
+      </script>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="pane-content-mpu">
+    <p class="adtxt"><button onClick="ADTECH.refreshPubAd('300x250atf');">Reload</button><span class="alias"></span></p>
+    <div class="pane-advertising-wrapper">
+      <div id="div-gpt-ad-1438955597722-0">
+        <script type="text/javascript">
+          ADTECH.loadPubAd('300x250atf');
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="pane-content-mpu">
+    <p class="adtxt"><button onClick="ADTECH.refreshPubAd('300x250btf');">Reload</button><span class="alias"></span></p>
+    <div class="pane-advertising-wrapper">
+      <div id="div-gpt-ad-1439394117151-0">
+        <script type="text/javascript">
+          ADTECH.loadPubAd('300x250btf');
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pane-content">
+  <p class="adtxt"><button onClick="ADTECH.refreshPubAd('728x90btf');">Reload</button><span class="alias"></span></p>
+  <div class="pane-advertising-wrapper">
+    <div id="div-gpt-ad-1439394117151-1">
+      <script type="text/javascript">
+        ADTECH.loadPubAd('728x90btf');
+      </script>
+    </div>
+  </div>
+</div>
+</body>
+</html>
