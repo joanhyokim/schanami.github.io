@@ -1384,7 +1384,7 @@ food.setAuctionProvider({
             if (document.location.search.slice(1) === "test=on") {
                 googletag.pubads().setTargeting("test", "on");
             }
-            googletag.enableServices();
+            
             // done();
         });
 
@@ -1433,6 +1433,7 @@ food.setAuctionProvider({
 
                 googletag.display(slot.elementId);
             }
+            googletag.enableServices();
         });
         done();
     },
