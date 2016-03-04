@@ -41,7 +41,6 @@ ami.mensfitness.ads = (function() {
 			                    // food.observe('AUCTION_POST_RUN', function() {
 
 			                        googletag.cmd.push(function() {
-			                        	// alert(key);
 			                            googletag.display(key);
 			                            googletag.pubads().refresh([ami.mensfitness.ads.slots[key]]);
 			                            delete ami.mensfitness.ads.slots[key];
@@ -234,7 +233,7 @@ aolProvider.requestBids = function(slots, pushBid, done) {
          pubApiOK: function(response, params) {
              var targetingKeyValues = response.getBidKeyValueObj();
              targetingKeyValues.mpalias = response.data.aliasName;
-             alert("AOL"+response.getRoundedCPM());
+             console.log("AOL bid value: "+response.getRoundedCPM());
              pushBid({
                  slot: response.data.slotName,
                  value: response.getRoundedCPM(),
