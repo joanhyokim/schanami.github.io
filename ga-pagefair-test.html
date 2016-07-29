@@ -1,0 +1,36 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1912801-28', 'auto');
+  ga('send', 'pageview');
+  // ga('send', 'pagefair');
+
+</script>
+
+
+<script type="text/javascript">
+    (function() {
+        function async_load(script_url){
+            var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
+            var s = document.createElement('script'); s.src = protocol + script_url;
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        }
+        bm_website_code = 'D4DCCECD0C164812';
+        jQuery(document).ready(function(){async_load('asset.pagefair.com/measure.min.js')});
+        jQuery(document).ready(function(){async_load('asset.pagefair.net/ads.min.js')});
+    })();
+</script>
+<script>
+   (function pf_notify(adblock_detected){
+        // adblock_detected value is true/false. Convert to something more meaningful
+        var adblock_status = adblock_detected ? 'is_adblocking' : 'not_adblocking';
+        // ga('send', 'pagefair');
+        ga('send', 'event', 'setCustomDimension', 1, {
+           'dimension1': adblock_status,
+           'nonInteraction': true
+        });
+    })();
+</script>
