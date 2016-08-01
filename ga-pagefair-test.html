@@ -25,7 +25,7 @@
     })();
 </script>
 <script>
-   (function pf_notify(adblock_detected){
+   function pf_notify(adblock_detected){
         // adblock_detected value is true/false. Convert to something more meaningful
         var adblock_status = adblock_detected ? 'is_adblocking' : 'not_adblocking';
         // ga('send', 'pagefair');
@@ -33,5 +33,5 @@
            'dimension1': adblock_status,
            'nonInteraction': true
         });
-    })();
+    };
 </script>
