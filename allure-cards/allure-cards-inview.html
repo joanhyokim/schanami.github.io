@@ -76,7 +76,7 @@
     border:solid white 1px;
     -webkit-transform: translate(-30px,30px);
     transform: translate(-30px,30px);    
-    box-shadow: 1px 2px 5px rgba(75, 75, 75, 0.7)
+    box-shadow: 1px 2px 15px rgba(75, 75, 75, 0.7)
 
 }
 .stack-vertspread.active a:nth-child(2) {
@@ -101,6 +101,7 @@
 <script>
   $( function() {
     $( ".stack-vertspread a" ).draggable({
+        axis: "x",
     	start: function(){
             document.querySelector("#img01").classList.remove("shake");    
     	},
