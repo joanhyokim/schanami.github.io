@@ -9,7 +9,7 @@
     position: relative;
     max-width: 100%;
 }
-.stack a {
+.stack img {
     max-width: 100%;
     position: absolute;
     top: 0;
@@ -20,23 +20,22 @@
     border:solid white 1px;
     -webkit-transform: translate(-30px,30px);
     transform: translate(-30px,30px);    
-    box-shadow: 1px 2px 5px rgba(75, 75, 75, 0.7)
 
 }
-.stack-vertspread.active a:nth-child(2) {
+.stack-vertspread.active img:nth-child(2) {
     -webkit-transform: translate(-45px,20px);
     transform: translate(-45px,20px);
     -webkit-transition-delay: .2s;
     transition-delay: .2s;
 }
 
-.stack-vertspread.active a:nth-child(3) {
+.stack-vertspread.active img:nth-child(3) {
     -webkit-transform: translate(-60px,10px);
     transform: translate(-60px,10px);
     -webkit-transition-delay: .1s;
     transition-delay: .1s;
 }
-.stack-vertspread.active a:nth-child(4) {
+.stack-vertspread.active img:nth-child(4) {
     -webkit-transform: translateX(-75px);
     transform: translateX(-75px);
 }
@@ -44,7 +43,7 @@
 </style>
 <script>
   $( function() {
-    $( ".stack-vertspread a" ).draggable({
+    $( ".stack-vertspread img" ).draggable({
     	start: function(){
     		// console.log($(this).attr("id"));
     	},
@@ -54,23 +53,22 @@
     	},
     	stop: function(){
     		console.log($(this).attr("id"));
-    		if($(".stack-vertspread a").length == 4){
+    		if($(".stack-vertspread img").length == 4){
     			var id_selector = $(this).attr("id");
     			// alert(id_selector);
 				// $(this).insertBefore(".stack-vertspread img");
 
-				$(".stack-vertspread a").first().before($("#"+id_selector));
-				$(".stack-vertspread a").attr("style","");
+				$(".stack-vertspread img").first().before($("#"+id_selector));
+				$(".stack-vertspread img").attr("style","");
     		}
 			
     	}
     });
 });
 </script>
-
 <figure class="stack stack-vertspread active">
-					<a href="http://www.allurebridals.com" target="_blank" id="img04"><img src="7_9400F.jpg" alt="img04"></a>
-                    <a href="http://www.allurebridals.com" target="_blank" id="img03"><img src="7_9401F.jpg" alt="img03"></a>
-                    <a href="http://www.allurebridals.com" target="_blank" id="img02"><img src="7_9402F.jpg" alt="img02"></a>
-                    <a href="http://www.allurebridals.com" target="_blank" id="img01"><img src="7_9403F.jpg" alt="img01"></a>
+					<img src="7_9400F.jpg" alt="img04" id="img04">
+                    <img src="7_9401F.jpg" alt="img03" id="img03">
+                    <img src="7_9402F.jpg" alt="img02" id="img02">
+                    <img src="7_9403F.jpg" alt="img01" id="img01">
 </figure>

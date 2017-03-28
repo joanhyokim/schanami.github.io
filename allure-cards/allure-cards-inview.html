@@ -2,6 +2,59 @@
 <script src="jquery-ui.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
 <style type="text/css">
+.shake {    
+    /*-webkit-animation: degradedCardSwipeHint 0.6s ease-in-out 0.6s 1 alternate;*/
+    -webkit-animation: degradedCardSwipeHint .8s;
+        animation: degradedCardSwipeHint .8s
+}
+
+@-webkit-keyframes shake {
+ from {
+    /*-webkit-transform: rotate(0deg);*/
+    -webkit-transform-origin: initial;
+ }
+ to {
+   /*-webkit-transform-origin:50% 50%;*/
+   /*-webkit-transform: rotate(-180deg);*/
+   -webkit-transform: rotate(-23deg);
+ }
+
+}
+
+@-webkit-keyframes degradedCardSwipeHint {
+    0%,
+    to {
+        -webkit-transform: translateX(0) translateY(0) translateZ(0) rotate(0deg);
+        transform: translateX(0) translateY(0) translateZ(0) rotate(0deg);
+        -webkit-transform-origin: 10% 90%;
+        transform-origin: 10% 90%
+    }
+    50% {
+        -webkit-transform: translateX(0) translateY(0) translateZ(0) rotate(-10deg);
+        transform: translateX(0) translateY(0) translateZ(0) rotate(-10deg);
+        -webkit-transform-origin: 10% 90%;
+        transform-origin: 10% 90%
+    }
+}
+@keyframes degradedCardSwipeHint {
+    0%,
+    to {
+        -webkit-transform: translateX(0) translateY(0) translateZ(0) rotate(0deg);
+        transform: translateX(0) translateY(0) translateZ(0) rotate(0deg);
+        -webkit-transform-origin: 10% 90%;
+        transform-origin: 10% 90%
+    }
+    50% {
+        -webkit-transform: translateX(0) translateY(0) translateZ(0) rotate(-10deg);
+        transform: translateX(0) translateY(0) translateZ(0) rotate(-10deg);
+        -webkit-transform-origin: 10% 90%;
+        transform-origin: 10% 90%
+    }
+}
+
+
+
+
 .stack {
     margin: 20px auto;
     width: 400px;
@@ -46,11 +99,9 @@
   $( function() {
     $( ".stack-vertspread a" ).draggable({
     	start: function(){
-    		// console.log($(this).attr("id"));
+            document.querySelector("#img01").classList.remove("shake");    
     	},
     	drag: function(){
-
-
     	},
     	stop: function(){
     		console.log($(this).attr("id"));
@@ -66,6 +117,21 @@
     	}
     });
 });
+</script>
+
+<script>
+var refreshed = false;
+var scrollListener = function(){
+    if(window.scrollY >= 0 && !refreshed){
+        document.querySelector("#img01").setAttribute("class","shake");
+        refreshed = true;
+        // document.querySelector("#img01").classList.remove("shake");    
+    }
+    // document.querySelector("#img01").removeAttribute("class");
+    // document.querySelector("#img01").classList.remove("shake");    
+    window.removeEventListener("load",scrollListener);
+}
+window.addEventListener("load",scrollListener);
 </script>
 
 <figure class="stack stack-vertspread active">
