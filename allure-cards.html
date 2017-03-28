@@ -1,0 +1,74 @@
+<script src="jquery-3.2.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+<style type="text/css">
+.stack {
+    margin: 20px auto;
+    width: 400px;
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+}
+.stack img {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    outline: 1px solid transparent;
+    border:solid white 1px;
+    -webkit-transform: translate(-30px,30px);
+    transform: translate(-30px,30px);    
+
+}
+.stack-vertspread.active img:nth-child(2) {
+    -webkit-transform: translate(-45px,20px);
+    transform: translate(-45px,20px);
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+.stack-vertspread.active img:nth-child(3) {
+    -webkit-transform: translate(-60px,10px);
+    transform: translate(-60px,10px);
+    -webkit-transition-delay: .1s;
+    transition-delay: .1s;
+}
+.stack-vertspread.active img:nth-child(4) {
+    -webkit-transform: translateX(-75px);
+    transform: translateX(-75px);
+}
+
+</style>
+<script>
+  $( function() {
+    $( ".stack-vertspread img" ).draggable({
+    	start: function(){
+    		// console.log($(this).attr("id"));
+    	},
+    	drag: function(){
+
+
+    	},
+    	stop: function(){
+    		console.log($(this).attr("id"));
+    		if($(".stack-vertspread img").length == 4){
+    			var id_selector = $(this).attr("id");
+    			// alert(id_selector);
+				// $(this).insertBefore(".stack-vertspread img");
+
+				$(".stack-vertspread img").first().before($("#"+id_selector));
+				$(".stack-vertspread img").attr("style","");
+    		}
+			
+    	}
+    });
+});
+</script>
+<figure class="stack stack-vertspread active">
+					<img src="http://www.allurebridals.com/assets/1550/7_9400F.jpg" alt="img04" id="img04">
+					<img src="http://www.allurebridals.com/assets/1550/7_9401F.jpg" alt="img03" id="img03">
+					<img src="http://www.allurebridals.com/assets/1550/7_9402F.jpg" alt="img02" id="img02">
+					<img src="http://www.allurebridals.com/assets/1550/7_9403F.jpg" alt="img01" id="img01">
+</figure>
